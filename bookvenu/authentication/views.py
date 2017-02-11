@@ -27,3 +27,8 @@ def login_view(request):
         return render(request, "authentication/login.html", {
             'form': form,
             'errors': errors})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')
