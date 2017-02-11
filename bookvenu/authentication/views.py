@@ -5,21 +5,25 @@ from django.contrib.auth import logout, authenticate, login
 
 # Create your views here.
 
-def login(request):
+def login_view(request):
     if request.user.is_authenticated():
         return redirect('/')
-    form = LoginForm(request.POST)
-    errors = []
-    if request.method == "POST":
-        if form.is_valid():
-            user = authenticate(username=form.cleaned_data['username'],
-                                password=form.cleaned_data['password'])
-            if user is not None:
-                login(request, user)
-                return redirect('/')
+    else:
+        errors = []
+        form = LoginForm(request.POST)
+        if request.method == 'POST':
+            if form.is_valid():
+                user = authenticate(username=form.cleaned_data['username'],
+                                    password=form.cleaned_data['password'])
+                if user is not None:
+                    login(request, user)
+                    return redirect('/')
+
+                else:
+                    errors.append('Incorrect username or password')
+
             else:
-                errors.append("Email sau parola invalida")
-    return render(request, 'authentication/login.html', {
-        'errors': errors,
-        'form': form
-    })
+                errors.append('Invalid form')
+        return render(request, "authentication/login.html", {
+            'form': form,
+            'errors': errors})
