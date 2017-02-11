@@ -1,0 +1,199 @@
+.header{
+  background-image: url('20.jpg');
+  height: 80px;
+}
+
+.leftcorner{
+  background: url("10.png");
+  width: 230px;
+  height: 80px;
+  position:relative;
+}
+
+.pozaj{
+    background-image: url("1.jpg");
+    background-repeat: no-repeat;
+    width:100%;
+    height:300px;
+    margin-top: 40px;
+    position:relative;
+}
+
+.text{
+    text-align:center;
+}
+
+.m{
+  margin-left: 30%;
+  padding-top:105%;
+}
+
+.leftcorner2{
+
+    margin-left:42%;
+    background-image: url("10.png");
+    background-repeat:no-repeat;
+    width: 250px;
+    height: 80px;
+}
+
+.pozaj2{
+    background-image: url("2.jpg");
+    background-repeat: no-repeat;
+    width:100%;
+    height:50px;
+    margin-top: 40px;
+    position:relative;
+}
+
+.textj{
+    padding-top: 20px;
+    position: relative;
+    display: inline-block;
+}
+
+.textj2{
+    display:inline-block;
+    padding-left: 50%;
+    position: relative;
+}
+
+.textj3{
+    display:inline-block;
+    padding-left: 5%;
+    position: relative;
+}
+
+.margini{
+    margin-right:40%;
+    display: inline-block;
+}
+
+.margini2{
+    margin-left:2%;
+    width:150px;
+    margin-right: 60%;
+}
+
+.avatar
+{
+  /* make it responsive */
+  max-width: 10%;
+  width:10%;
+  height:auto;
+  display:block;
+  /* div height to be the same as width*/
+  padding-top:10%;
+
+  /* make it a circle */
+  border-radius:100%;
+
+  position:absolute;
+  background-repeat: no-repeat;
+
+
+}
+.margini3{
+  margin-left: 25%;
+  position:absolute;
+
+}.margini4{
+  margin-left: 26%;
+  position:absolute;
+}
+
+.margini5{
+  padding-left: 31%;
+
+}
+
+.margini6
+{
+  margin-top:25%;
+}
+
+.ceva21{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:17%;
+  height:72%;
+  margin-top: 3.5%;
+  position:absolute;
+}
+
+.ceva2{
+  margin-left:28%;
+}
+
+.ceva1{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:60%;
+  height: 50%;
+  margin-top: 3.5%;
+  margin-left:28%
+}
+.ceva3{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:4%;
+  height: 7.3%;
+  margin-top: 0.4%;
+  margin-left:28%;
+  position:absolute;
+}
+.ceva4{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:4%;
+  height: 7.3%;
+  margin-top: 0.4%;
+  margin-left:32.3%;
+  position:absolute;
+}
+
+.ceva5{
+  margin-left:28%;
+  position:absolute;
+  margin-top:6%;
+  margin-right:13%;
+}
+
+.las{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:18%;
+  height:45%;
+  margin-top:0.5%;
+  position:absolute;
+}
+
+.altceva{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:50%;
+  height:14%;
+  margin-top: 0.4%;
+  margin-left:32.3%;
+  position:absolute;
+}
+
+.altceva2{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:50%;
+  height:14%;
+  margin-top: 8%;
+  margin-left:32.3%;
+  position:absolute;
+}
+
+.altceva3{
+  background-image: url("2.jpg");
+  background-repeat: no-repeat;
+  width:50%;
+  height:14%;
+  margin-top: 15.7%;
+  margin-left:32.3%;
+  position:absolute;
+}
