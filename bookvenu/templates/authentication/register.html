@@ -34,7 +34,7 @@
 <style type="text/css">
  .bg{
 
-background-image: url("http://wallpaper-gallery.net/images/full-hd-background-wallpaper/full-hd-background-wallpaper-10.jpg");
+background-image: url("http://www.justincobbacademy.com/wp-content/uploads/2014/08/event-presenter-final.jpg");
 background-repeat:no-repeat;
 
     background-attachment: fixed;
@@ -76,48 +76,106 @@ padding-left:45%;
 	</div>
    <div class="s">
 <font size="6"><p align="center">Register</p></font>
-       <form class="form-login" method="POST">
-        {% csrf_token %}
-<form>
-<div class="o">
-      <div class="col-xs-12">
-        <label for="username">Username:</label>
-        {{ form.username|add_class:"form-control"|attr:"required:requierd"}}
-     </div>
-</div>
-<br><br><br>
+       <form method="post">
+				{% csrf_token %}
+					<!-- First Label -->
+					<label>Username</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.username|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+					{% if form.username.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.username.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
 
 
-<div class="o">
-      <div class="col-xs-12">
-        <label for="username">Email Adress:</label>
-        {{ form.email|add_class:"form-control"|attr:"required:requierd"}}
-     </div>
-</div>
-<br><br><br>
-<div class="o">
-      <div class="col-xs-12">
-        <label for="ex11">Password</label>
-        {{ form.password|add_class:"form-control"|attr:"required:requierd"}}
-     </div>
-</div>
-<br><br><br>
-<div class="o">
-      <div class="col-xs-12">
-        <label for="ex11">Retype password</label>
-        {{ form.password|add_class:"form-control"|attr:"required:requierd"}}
-     </div>
-</div>
+					<br>
+					<!-- Secound Label -->
+					<label>E-mail</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
 
+					  {{ form.email|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+					{% if form.email.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.email.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
 
-</form>
-<br><br><br>
-<div class="o3">
-<button type="button" class="btn btn-primary">Submit</button>
-</div>
-           </form>
+					<br>
+					<!-- Third Label -->
+					<label>Password</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-ban-circle"></span></span>
+
+					  {{ form.password|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+					<br>
+					{% if form.password.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.username.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
+
+					<br>
+					<!-- Fourth Label -->
+					<label>Reenter Password</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-ban-circle"></span></span>
+
+					  {{ form.retypepassword|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+					<br>
+					{% if form.retypepassword.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.retypepassword.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
+					<br>
+					 <center>{{form.recaptcha|attr:"required:required"}}</center>
+					 {% if form.recaptcha.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.recaptcha.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
+					 <br>
+					<div>
+						<input style="border: 1px solid black;" class="form-control btn btn-default" type="submit" placeholder="Submit">
+					</div>
+					<br><br>
+					</form>
 <br><br>
-<font size="2" color="#6495ED"><p align="center"><a href="{% static "file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/Login.html" %}" style="text-decoration: none">You have an account already? Go and log in.</a></p></font>
+<font size="2" color="#6495ED"><p align="center"><a href="/login"%}" style="text-decoration: none">You have an account already? Go and log in.</a></p></font>
    </div>
 </div>
 </body>
