@@ -35,7 +35,7 @@
 <style type="text/css">
  .bg{
 
-background-image: url("http://wallpaper-gallery.net/images/full-hd-background-wallpaper/full-hd-background-wallpaper-10.jpg");
+background-image: url("http://www.justincobbacademy.com/wp-content/uploads/2014/08/event-presenter-final.jpg");
 background-repeat:no-repeat;
 
     background-attachment: fixed;
@@ -91,20 +91,23 @@ padding-left:45%;
 					</div>
 					{% endfor %}
 				    {% endif %}
-  <div class="col-xs-12">
-    <label for="username">Username:</label>
-      {{ form.username|add_class:"form-control"|attr:"required:requierd"}}
- </div>
+
+    <label>Username</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.username|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
 </div>
-<br><br><br><br>
+<br>
 
 
-<div class="o">
-      <div class="col-xs-12">
-        <label for="ex11">Password</label>
-        {{ form.password|add_class:"form-control"|attr:"required:requierd"}}
-     </div>
-</div>
+<label>Password</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-ban-circle"></span></span>
+
+					  {{ form.password|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
 
 
 <br><br><br><br>
@@ -115,7 +118,7 @@ padding-left:45%;
 </div>
     </form>
 <br><br>
-<font size="2" color="#6495ED"><p align="center"><a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/register.html" style="text-decoration: none">You don't have an account? Go and create one.</a></p></font>
+<font size="2" color="#6495ED"><p align="center"><a href="/register" style="text-decoration: none">You don't have an account? Go and create one.</a></p></font>
 
 </div>
 </div>

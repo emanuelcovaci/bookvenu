@@ -22,6 +22,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'u6pr011&$_l3m4b@uhy%yua2+4kv+ly9gj#!7%x9w^@q=m3i#q'
 
+# RECAPTCHA
+RECAPTCHA_PUBLIC_KEY = '6LcOHRYUAAAAAOPjLWe4ya2DrN1SEcKRbsYe-Kqh'
+RECAPTCHA_PRIVATE_KEY = '6LcOHRYUAAAAAFTBN0c6E0lGx8ScDTPoy9cVSKjI'
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -38,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'widget_tweaks',
+    'captcha',
     'homepages',
     'authentication',
 ]
@@ -117,6 +123,8 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+NOCAPTCHA = True
 
 
 # Static files (CSS, JavaScript, Images)

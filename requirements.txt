@@ -1,2 +1,3 @@
 django-widget-tweaks
 Django==1.10.5
+django-recaptcha==1.0.5
