@@ -26,14 +26,18 @@ class UserRegisterForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email',  'password']
+        fields = ['username', 'email',  'password' , 'first_name', 'last_name']
         widgets = {
             'username': forms.TextInput({'required': 'required',
                                          'placeholder': 'Username'}),
             'email': forms.EmailInput({'required': 'required',
                                        'placeholder': 'Email'}),
             'password': forms.PasswordInput(attrs={'required': 'required',
-                                                   'placeholder': 'Password'})
+                                                   'placeholder': 'Password'}),
+            'first_name': forms.TextInput({'required': 'required',
+                                         'placeholder': 'First Name'}),
+            'last_name': forms.TextInput({'required': 'required',
+                                         'placeholder': 'Last Name'}),
         }
 
     def clean_email(self):
@@ -64,3 +68,21 @@ class UserRegisterForm(forms.ModelForm):
         if len(password) < 8:
             raise forms.ValidationError("Password is too short")
         return password2
+
+
+    def clean_firstname(self):
+        first_name = self.cleaned_data['firstname']
+        if (
+                not (first_name.isalnum() or first_name.isalpha())
+        ):
+            raise forms.ValidationError("Name contains invalid characters")
+        return first_name
+
+
+    def clean_lastname(self):
+        last_name = self.cleaned_data['lastname']
+        if (
+                not (last_name.isalnum() or last_name.isalpha())
+        ):
+            raise forms.ValidationError("Name contains invalid characters")
+        return last_name

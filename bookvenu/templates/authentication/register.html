@@ -97,6 +97,45 @@ padding-left:45%;
                        </div>
 					{% endif %}
 
+		   			<br>
+
+		   			<label>First Name</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.first_name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+					{% if form.first_name.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.first_name.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
+
+		   			<br>
+
+		   			<label>Last Name</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.last_name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+					{% if form.last_name.errors %}
+					<br>
+					<div class="alert alert-danger alert-dismissible" role="alert">
+					  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					  <strong>Warning!</strong>
+					   {% for error in form.last_name.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+					{% endif %}
 
 					<br>
 					<!-- Secound Label -->
@@ -137,7 +176,7 @@ padding-left:45%;
                        </div>
 					{% endif %}
 
-					<br>
+
 					<!-- Fourth Label -->
 					<label>Reenter Password</label>
 					<div class="input-group">
