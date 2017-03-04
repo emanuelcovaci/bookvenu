@@ -1,0 +1,121 @@
+<html lang="en">
+
+<head>
+{% load staticfiles %}
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Profile</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
+        <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
+    <![endif]-->
+
+    <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
+    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/bootstrap-iso.css" %}"/>
+
+    <!--Font Awesome (added because you use icons in your prepend/append)-->
+    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}"/>
+
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+
+              <a class="navbar-brand" href="/">BookVenue</a>
+          </div>
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+                  <li>
+                      <a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/post.html">+</a>
+                  </li>
+                  <li>
+                      <a href="/profile">YOU</a>
+                  </li>
+
+              </ul>
+          </div>
+          <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+  </nav>
+
+    <legend><p align="left">USERNAME</p></legend>
+
+   <div class="margini2">
+    <div class="avatar"></div>
+   </div>
+
+       <font size="6"><p align="center">Details</p></font>
+
+     <br></br>
+
+     <div class="margini3">
+        <font size="4"><p> First name:</p></font>
+     </div>
+
+     <br></br><br>
+
+     <div class="margini3">
+        <font size="4"><p>Second name:</p></font>
+     </div>
+
+   <div class="col-md-2">
+       <a class="btn btn-md btn-default btn-block" href="/profile">Details</a>
+   </div>
+
+
+   <br></br><br>
+
+   <div class="margini3">
+      <font size="4"><p>Country:</p></font>
+   </div>
+
+
+
+   <div class="col-md-2">
+       <a class="btn btn-md btn-default btn-block" href="/profile/change-password">Change password</a>
+   </div>
+
+   <br></br><br>
+
+   <div class="margini3">
+      <font size="4"><p>Town:</p></font>
+   </div>
+
+
+   <div class="col-md-2">
+       <a class="btn btn-md btn-default btn-block" href="/profile/history">View Deals</a>
+   </div>
+
+
+   <br></br><br>
+
+   <div class="margini3">
+      <font size="4"><p>Birth date:</p></font>
+   </div>
+
+
+</body>
+</html>
