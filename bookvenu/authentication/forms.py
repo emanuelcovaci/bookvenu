@@ -23,7 +23,6 @@ class UserRegisterForm(forms.ModelForm):
         'placeholder': 'Retype password',
         'label': 'Retype password',
         'required': 'required'}))
-    country  = forms.ChoiceField()
 
     class Meta:
         model = User
