@@ -6,13 +6,5 @@ from django.db import models
 class Account(models.Model):
     user = models.OneToOneField(User,primary_key = True)
     phonenumber = models.CharField(max_length = 10)
-
-    BUCURESTI = 'BC'
-    TIMISOARA = 'TM'
-
-    CITY_CHOICES = (
-        (BUCURESTI, 'Bucuresti'),
-        (TIMISOARA, 'Timisoara'),
-    )
-
-    city_choices = models.CharField(max_length=10 , choices= CITY_CHOICES , default=BUCURESTI)
+    city = models.CharField(max_length = 30)
+    country = models.CharField(max_length = 15)

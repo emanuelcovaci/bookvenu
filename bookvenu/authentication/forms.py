@@ -17,6 +17,7 @@ class LoginForm(forms.Form):
                               'placeholder': 'Password'
                           }))
 
+
 class UserRegisterForm(forms.ModelForm):
     recaptcha = ReCaptchaField()
     retypepassword = forms.CharField(widget=forms.PasswordInput(attrs={
@@ -86,3 +87,32 @@ class UserRegisterForm(forms.ModelForm):
         ):
             raise forms.ValidationError("Name contains invalid characters")
         return last_name
+
+
+class AccRegisterForm(forms.ModelForm):
+
+    class Meta:
+        model = Account
+        fields = ['phonenumber','city','country']
+        widgets = {
+            'phonenumber' : forms.TextInput({'required':'required','placeholder':'Phonenumber'}),
+            'city' : forms.TextInput({'required':'required','placeholder':'City'}),
+            'country' : forms.TextInput({'required':'required','placeholder':'Country'}),
+        }
+    def clean_phonenumber(self):
+        phonenumber = self.cleaned_data['phonenumber']
+        if phonenumber[0] != '0' or phonenumber[1] != '7' or len(phonenumber) != 10 or phonenumber.isdigit() == False:
+            raise forms.ValidationError("Invalid phonenumber")
+        return phonenumber
+
+    def clean_city(self):
+        city = self.cleaned_data['city']
+        if city.isalpha == False:
+            raise forms.ValidationError("City name contains invalid characters")
+        return city
+
+    def clean_country(self):
+        country = self.cleaned_data['country']
+        if country.isalpha == False:
+            raise forms.ValidationError("Country name contains invalid characters")
+        return country

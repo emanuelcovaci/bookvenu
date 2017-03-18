@@ -92,8 +92,23 @@
        </div>
 
        <div class="col-md-4">
-         <label for="phone">Phone number:</label>
-         <input class="form-control" id="phone" type="text">
+        <label>Phone number</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ EventForm.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+
+                    {% if EventForm.phonenumber.errors %}
+                    <br>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Warning!</strong>
+                       {% for error in EventForm.phonenumber.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+                    {% endif %}
        </div>
 
        <p>* must be completed</p>
@@ -101,13 +116,13 @@
 
 
        <div class="col-md-4">
-         <label for="category">Category:</label>
-         <select id="category" name="category" class="form-control">
-           <option value="1">Hotels</option>
-           <option value="2">Restaurants</option>
-           <option value="3">Business Meeting</option>
-           <option value="4">Other</option>
-         </select>
+            <label>Category</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ EventForm.category|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+
        </div>
 
        <div class="col-md-4">
@@ -118,25 +133,54 @@
         <br></br><br><br>
 
        <div class="col-md-4">
-         <label for="number-person">People:</label>
-         <select id="number-person" name="number-person" class="form-control">
-           <option value="1">Just a person</option>
-           <option value="2">Two persons</option>
-           <option value="3">Three persons</option>
-           <option value="4">Four persons</option>
-           <option value="5">More than five persons</option>
-         </select>
+            <label>NrLocuri</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ EventForm.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+
+                    {% if EventForm.nrlocuri.errors %}
+                    <br>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Warning!</strong>
+                       {% for error in EventForm.ntlocuri.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+                    {% endif %}
        </div>
+
        <div class="col-md-4">
-        <label for="details">Details:</label>
-        <textarea class="form-control" rows="5" id="details"></textarea>
+           <label>Details</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ EventForm.details|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
       </div>
 
        <br></br><br></br><br>
 
      <div class="col-md-4">
-       <label for="price">Price:</label>
-       <input class="form-control" id="price" type="text">
+        <label>Price</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ EventForm.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+
+                    {% if EventForm.price.errors %}
+                    <br>
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <strong>Warning!</strong>
+                       {% for error in EventForm.price.errors %}
+                              {{ error }}
+                       {% endfor %}
+                       </div>
+                    {% endif %}
      </div>
 
      <div class="margini5">
