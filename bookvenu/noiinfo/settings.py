@@ -47,6 +47,8 @@ INSTALLED_APPS = [
     'captcha',
     'homepages',
     'authentication',
+    'post',
+    'django_extensions'
 ]
 
 MIDDLEWARE_CLASSES = [

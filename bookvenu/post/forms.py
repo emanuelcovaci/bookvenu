@@ -1,8 +1,7 @@
 from django import forms
 from .models import EventModel
 
-class EventForm(forms.Form):
-
+class EventForm(forms.ModelForm):
     class Meta:
         model = EventModel
         fields = ['name', 'adress', 'nrlocuri', 'date', 'price', 'phonenumber', 'details', 'category']
@@ -21,9 +20,10 @@ class EventForm(forms.Form):
         if phonenumber[0] != '0' or phonenumber[1] != '7' or len(phonenumber) != 10 or phonenumber.isdigit() == False:
             raise forms.ValidationError("Invalid phonenumber")
         return phonenumber
+
     def clean_price(self):
         price = self.cleaned_data['price']
-        if phonenumber.isdigit() == False:
+        if price.isdigit() == False:
             raise forms.ValidationError("Invalid price")
         return price
 

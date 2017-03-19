@@ -100,19 +100,19 @@ class AccRegisterForm(forms.ModelForm):
             'country' : forms.TextInput({'required':'required','placeholder':'Country'}),
         }
     def clean_phonenumber(self):
-        phonenumber = self.cleaned_data['phonenumber']
-        if phonenumber[0] != '0' or phonenumber[1] != '7' or len(phonenumber) != 10 or phonenumber.isdigit() == False:
+        phone_number = self.cleaned_data['phonenumber']
+        if phone_number[0] != '0' or phone_number[1] != '7' or len(phone_number) != 10 or phonen_umber.isdigit() == False:
             raise forms.ValidationError("Invalid phonenumber")
         return phonenumber
 
     def clean_city(self):
-        city = self.cleaned_data['city']
+        city = self.cleaned_data['City']
         if city.isalpha == False:
             raise forms.ValidationError("City name contains invalid characters")
         return city
 
     def clean_country(self):
-        country = self.cleaned_data['country']
+        country = self.cleaned_data['Country']
         if country.isalpha == False:
             raise forms.ValidationError("Country name contains invalid characters")
         return country

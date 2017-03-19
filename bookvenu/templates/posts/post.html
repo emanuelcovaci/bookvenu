@@ -2,6 +2,7 @@
 
 <head>
 {% load staticfiles %}
+       {% load widget_tweaks %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -71,24 +72,37 @@
     <div class="col-lg-12">
         <h2 class="page-header" align="center">Post your offer right now</h2>
     </div>
-
+    <form method="post">
+    {% csrf_token %}
     <div class="container">
         <div class="col-md-4">
-          <label for="location">Name of location:</label>
-          <input class="form-control" id="location" type="text">
+            <label>Name of location</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
       </div>
 
     <div class="col-md-4">
-        <label for="date">Date:</label>
-        <input class="form-control" id="date" type="text">
+            <label>Date</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.date|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
     </div>
 
         <br></br><br><br></br><br><br>
-        <p>After you'll post you offer you'll recieve an email with all details</p>
+        <p>After you'll post you offer you'll recieve an email</p>
 
        <div class="col-md-4">
-         <label for="Adress">Adress:</label>
-         <input class="form-control" id="Adress" type="text">
+            <label>Adress</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.adress|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
        </div>
 
        <div class="col-md-4">
@@ -96,23 +110,12 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ EventForm.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                      {{ form.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
-
-                    {% if EventForm.phonenumber.errors %}
-                    <br>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <strong>Warning!</strong>
-                       {% for error in EventForm.phonenumber.errors %}
-                              {{ error }}
-                       {% endfor %}
-                       </div>
-                    {% endif %}
        </div>
 
        <p>* must be completed</p>
-       <br></br><br>
+       <br></br>
 
 
        <div class="col-md-4">
@@ -120,7 +123,7 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ EventForm.category|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                      {{ form.category|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
 
        </div>
@@ -137,58 +140,38 @@
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ EventForm.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                      {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
 
-                    {% if EventForm.nrlocuri.errors %}
-                    <br>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <strong>Warning!</strong>
-                       {% for error in EventForm.ntlocuri.errors %}
-                              {{ error }}
-                       {% endfor %}
-                       </div>
-                    {% endif %}
        </div>
 
        <div class="col-md-4">
-           <label>Details</label>
+            <label>Details</label>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ EventForm.details|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                      {{ form.details|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
       </div>
 
-       <br></br><br></br><br>
+       <br></br><br></br>
 
      <div class="col-md-4">
         <label>Price</label>
                     <div class="input-group">
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ EventForm.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                      {{ form.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
-
-                    {% if EventForm.price.errors %}
-                    <br>
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                      <strong>Warning!</strong>
-                       {% for error in EventForm.price.errors %}
-                              {{ error }}
-                       {% endfor %}
-                       </div>
-                    {% endif %}
      </div>
+
+
 
      <div class="margini5">
-       <button type="button" class="btn btn-primary">Submit</button>
+       <button class="btn btn-primary">Submit</button>
      </div>
-
     </div>
-
+</form>
 
 </body>
 </html>
