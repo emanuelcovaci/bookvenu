@@ -15,6 +15,7 @@ class EventForm(forms.ModelForm):
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
             'category': forms.TextInput({'required': 'required', 'placeholder': 'Category'}),
         }
+
     def clean_phonenumber(self):
         phonenumber = self.cleaned_data['phonenumber']
         if phonenumber[0] != '0' or phonenumber[1] != '7' or len(phonenumber) != 10 or phonenumber.isdigit() == False:
