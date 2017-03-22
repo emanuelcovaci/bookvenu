@@ -37,9 +37,7 @@ class EventForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        if (
-                not (name.isalnum() or name.isalpha())
-        ):
+        if name.isdigit():
             raise forms.ValidationError("Name contains invalid characters")
         return name
 
