@@ -33,3 +33,29 @@ class EventForm(forms.ModelForm):
         if nrlocuri.isdigit() == False:
             raise forms.ValidationError("Invalid input")
         return nrlocuri
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if (
+                not (name.isalnum() or name.isalpha())
+        ):
+            raise forms.ValidationError("Name contains invalid characters")
+        return name
+
+    def clean_adress(self):
+        adress = self.cleaned_data['adress']
+        return adress
+
+    def clean_date(self):
+        date = self.cleaned_data['date']
+        if date.isdigit() == False:
+            raise forms.ValidationError("Invalid input")
+        return date
+
+    def clean_details(self):
+        details = self.cleaned_data['details']
+        return details
+
+    def clean_category(self):
+        category = self.cleaned_data['category']
+        return category
