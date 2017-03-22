@@ -1,4 +1,5 @@
 from django import forms
+from datetime import date
 from .models import EventModel
 
 class EventForm(forms.ModelForm):
@@ -9,7 +10,7 @@ class EventForm(forms.ModelForm):
             'name': forms.TextInput({'required': 'required', 'placeholder': 'Name'}),
             'adress': forms.TextInput({'required': 'required', 'placeholder': 'Adress'}),
             'nrlocuri': forms.TextInput({'required': 'required', 'placeholder': 'Nr.Locuri'}),
-            'date': forms.TextInput({'required': 'required', 'placeholder': 'Date'}),
+            'date': forms.TextInput({'required': 'required', 'placeholder': 'Date format YYYY-MM-DD'}),
             'price': forms.TextInput({'required': 'required', 'placeholder': 'Price'}),
             'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
@@ -46,11 +47,16 @@ class EventForm(forms.ModelForm):
         adress = self.cleaned_data['adress']
         return adress
 
-    def clean_date(self):
-        date = self.cleaned_data['date']
-        if date.isdigit() == False:
-            raise forms.ValidationError("Invalid input")
-        return date
+    def clean_data(self):
+        data = self.cleaned_data['data']
+        if data < date.today():
+            raise forms.ValidationError("Date is not valid")
+        else:
+            delta = data - date.today()
+            if delta.days > 31:
+                raise forms.ValidationError("Task can scheduled with at"
+                                            "most 31 days before")
+        return data
 
     def clean_details(self):
         details = self.cleaned_data['details']

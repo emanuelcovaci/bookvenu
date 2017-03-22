@@ -7,7 +7,8 @@ def create_post(request):
     if request.method == 'POST':
         if form.is_valid() == True:
             form.save()
-        return redirect('/')
+            return redirect('/')
+    print form.errors
     return render(request, "posts/post.html", {
         'form': form
     })
