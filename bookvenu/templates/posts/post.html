@@ -81,7 +81,17 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+
                     </div>
+            {% if form.name.errors %}
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.name.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
       </div>
 
     <div class="col-md-4">
@@ -91,10 +101,18 @@
 
                       {{ form.date|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                     </div>
+        {% if form.date.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Warning!</strong>
+                        {% for error in form.date.errors %}
+                        {{ error }}
+                        {% endfor %}
+                    </div>
+        {% endif %}
     </div>
 
-        <br></br><br><br></br><br><br>
-        <p>After you'll post you offer you'll recieve an email</p>
+        <br></br><br><br></br>
 
        <div class="col-md-4">
             <label>Adress</label>
@@ -102,7 +120,16 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.adress|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+           {% if form.adress.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.adress.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
        </div>
 
        <div class="col-md-4">
@@ -111,10 +138,19 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+           {% if form.phonenumber.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.phonenumber.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
        </div>
 
-       <p>* must be completed</p>
+
        <br></br>
 
 
@@ -124,13 +160,36 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.category|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+           {% if form.category.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.category.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
 
        </div>
 
        <div class="col-md-4">
-         <label for="images">Add images:</label>
-         <input class="form-control" id="images" type="text">
+            <label>NrLocuri</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+           {% if form.nrlocuri.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.nrlocuri.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
        </div>
 
         <br></br><br><br>
@@ -141,7 +200,16 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+           {% if form.nrlocuri.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.nrlocuri.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
 
        </div>
 
@@ -151,7 +219,16 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.details|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+           {% if form.details.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.details.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
       </div>
 
        <br></br><br></br>
@@ -162,10 +239,18 @@
                       <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
                       {{ form.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
+                        </div>
+         {% if form.price.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for error in form.price.errors %}
+				                                                {{ error }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
      </div>
-
-
+<br><br><br><br>
 
      <div class="margini5">
        <button class="btn btn-primary">Submit</button>

@@ -5,7 +5,7 @@ from .models import EventModel
 class EventForm(forms.ModelForm):
     class Meta:
         model = EventModel
-        fields = ['name', 'adress', 'nrlocuri', 'date', 'price', 'phonenumber', 'details', 'category']
+        fields = ['name', 'adress', 'nrlocuri', 'date', 'price', 'phonenumber', 'details', 'category','image1','image2','image3','image4']
         widgets = {
             'name': forms.TextInput({'required': 'required', 'placeholder': 'Name'}),
             'adress': forms.TextInput({'required': 'required', 'placeholder': 'Adress'}),
@@ -15,6 +15,10 @@ class EventForm(forms.ModelForm):
             'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
             'category': forms.TextInput({'required': 'required', 'placeholder': 'Category'}),
+            'image1': forms.ImageField({'required': 'required'}),
+            'image2': forms.ImageField({'required': 'required'}),
+            'image3': forms.ImageField({'required': 'required'}),
+            'image4': forms.ImageField({'required': 'required'}),
         }
 
     def clean_phonenumber(self):
@@ -38,7 +42,7 @@ class EventForm(forms.ModelForm):
     def clean_name(self):
         name = self.cleaned_data['name']
         if (
-                not (name.isalnum() or name.isalpha())
+                not (name.isalnum())
         ):
             raise forms.ValidationError("Name contains invalid characters")
         return name
@@ -65,3 +69,22 @@ class EventForm(forms.ModelForm):
     def clean_category(self):
         category = self.cleaned_data['category']
         return category
+
+    def clean_image4(self):
+        image = self.cleaned_data['image1']
+        image2 = self.cleaned_data['image2']
+        image3 = self.cleaned_data['image3']
+        image4 = self.cleaned_data['image4']
+        image_names = []
+        if(image1 and not isinstance(image1, (int, float))):
+            image_names.append(image1.name)
+        if(image2 and not isinstance(image2, (int, float))):
+            image_names.append(image2.name)
+        if(image3 and not isinstance(image3, (int, float))):
+            image_names.append(image3.name)
+        if(image4 and not isinstance(image4, (int, float))):
+            image_names.append(image4.name)
+        if(len(image_names)-1 == len(set(image_names))):
+            raise forms.ValidationError("You can't upload 2 images"
+                                        "that are the same")
+        return image4
