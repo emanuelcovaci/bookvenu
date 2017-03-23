@@ -109,3 +109,5 @@ ENV/
 whoosh_index/
 
 migrations/
+#File document
+/media/
