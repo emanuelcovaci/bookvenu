@@ -41,9 +41,7 @@ class EventForm(forms.ModelForm):
 
     def clean_name(self):
         name = self.cleaned_data['name']
-        if (
-                not (name.isalnum())
-        ):
+        if name.isdigit():
             raise forms.ValidationError("Name contains invalid characters")
         return name
 
@@ -71,7 +69,7 @@ class EventForm(forms.ModelForm):
         return category
 
     def clean_image4(self):
-        image = self.cleaned_data['image1']
+        image1 = self.cleaned_data['image1']
         image2 = self.cleaned_data['image2']
         image3 = self.cleaned_data['image3']
         image4 = self.cleaned_data['image4']
