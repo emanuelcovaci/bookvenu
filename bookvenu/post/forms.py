@@ -15,10 +15,7 @@ class EventForm(forms.ModelForm):
             'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
             'category': forms.TextInput({'required': 'required', 'placeholder': 'Category'}),
-            'image1': forms.ImageField({'required': 'required'}),
-            'image2': forms.ImageField({'required': 'required'}),
-            'image3': forms.ImageField({'required': 'required'}),
-            'image4': forms.ImageField({'required': 'required'}),
+
         }
 
     def clean_phonenumber(self):

@@ -3,12 +3,11 @@ from django.shortcuts import render, redirect
 from forms import EventForm
 # Create your views here.
 def create_post(request):
-    form = EventForm(request.POST)
+    form = EventForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
-        if form.is_valid() == True:
+        if form.is_valid():
             form.save()
             return redirect('/')
-    print form.errors
     return render(request, "posts/post.html", {
         'form': form
     })

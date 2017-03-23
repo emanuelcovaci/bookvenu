@@ -72,7 +72,7 @@
     <div class="col-lg-12">
         <h2 class="page-header" align="center">Post your offer right now</h2>
     </div>
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
         <div class="col-md-4">
@@ -87,8 +87,8 @@
                 <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.name.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.name.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -105,8 +105,8 @@
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                         <strong>Warning!</strong>
-                        {% for error in form.date.errors %}
-                        {{ error }}
+                        {% for errors in form.date.errors %}
+                        {{ errors }}
                         {% endfor %}
                     </div>
         {% endif %}
@@ -125,8 +125,8 @@
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.adress.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.adress.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -143,8 +143,8 @@
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.phonenumber.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.phonenumber.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -165,8 +165,8 @@
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.category.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.category.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -180,12 +180,13 @@
 
                       {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
                         </div>
+           <br>
            {% if form.nrlocuri.errors %}
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.nrlocuri.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.nrlocuri.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -205,8 +206,8 @@
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.nrlocuri.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.nrlocuri.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
@@ -224,12 +225,86 @@
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.details.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.details.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
       </div>
+
+        <div class="col-md-4">
+            <label>Image</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.image1|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+           {% if form.image1.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.image1.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+        </div>
+
+         <div class="col-md-4">
+            <label>Image</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.image2|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+           {% if form.image2.errorss %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.image2.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+        </div>
+
+         <div class="col-md-4">
+            <label>Image</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.image3|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+           {% if form.image3.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.image3.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+        </div>
+
+         <div class="col-md-4">
+            <label>Image</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.image4|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+           {% if form.image4.errors %}
+           <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.image4.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+        </div>
+
+
 
        <br></br><br></br>
 
@@ -244,8 +319,8 @@
          <div class="alert alert-danger alert-dismissible" role="alert">
 
                                                         <strong>Warning!</strong>
-				                                        {% for error in form.price.errors %}
-				                                                {{ error }}
+				                                        {% for errors in form.price.errors %}
+				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
