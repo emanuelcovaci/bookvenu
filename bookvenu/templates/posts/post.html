@@ -61,7 +61,9 @@
                   <li>
                       <a href="/profile">YOU</a>
                   </li>
-
+                  <li>
+                      <a href="/logout">Logout</a>
+                  </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -131,6 +133,7 @@
                                                             </div>
                                              {% endif %}
        </div>
+        <br><br><br><br>
 
        <div class="col-md-4">
         <label>Phone number</label>
@@ -150,8 +153,6 @@
                                              {% endif %}
        </div>
 
-
-       <br></br>
 
 
        <div class="col-md-4">
@@ -173,27 +174,7 @@
 
        </div>
 
-       <div class="col-md-4">
-            <label>NrLocuri</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-                      {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           <br>
-           {% if form.nrlocuri.errors %}
-           <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.nrlocuri.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-       </div>
-
-        <br></br><br><br>
 
        <div class="col-md-4">
             <label>NrLocuri</label>
@@ -213,6 +194,8 @@
                                              {% endif %}
 
        </div>
+
+        <br><br><br><br>
 
        <div class="col-md-4">
             <label>Details</label>
@@ -232,6 +215,26 @@
                                              {% endif %}
       </div>
 
+             <div class="col-md-4">
+        <label>Price</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ form.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                        </div>
+         {% if form.price.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.price.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+     </div>
+
+
+
         <div class="col-md-4">
             <label>Image</label>
                     <div class="input-group">
@@ -250,6 +253,8 @@
                                              {% endif %}
         </div>
 
+
+<br><br><br><br>
          <div class="col-md-4">
             <label>Image</label>
                     <div class="input-group">
@@ -304,34 +309,32 @@
                                              {% endif %}
         </div>
 
-
-
-       <br></br><br></br>
-
-     <div class="col-md-4">
-        <label>Price</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
-
-                      {{ form.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-         {% if form.price.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.price.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-     </div>
-<br><br><br><br>
-
+       <br><br><br><br><br>
      <div class="margini5">
        <button class="btn btn-primary">Submit</button>
      </div>
     </div>
 </form>
+<br><br>
+            <div class="pozaj2">
+                <div class="col-lg-12">
+                    <div class="textj">
+                      <p>Copyright &copy; Your Website 2014</p>
+                    </div>
+
+                    <div class="textj2">
+                      <a href='/logout'>Logout</a>
+                    </div>
+
+                    <div class="textj3">
+                      <a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/register.html">Terms and conditions</a>
+                    </div>
+
+                    <div class="textj3">
+                      <a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/register.html">Privacy and cookies</a>
+                    </div>
+                </div>
+            </div>
 
 </body>
 </html>

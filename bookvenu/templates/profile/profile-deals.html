@@ -34,7 +34,83 @@
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}"/>
 
 </head>
+<style type="text/css">
 
+h1 {
+  font-size:3em;
+  font-weight: 300;
+  line-height:1em;
+  text-align: center;
+  color: #4DC3FA;
+}
+
+h2 {
+  font-size:1em;
+  font-weight: 300;
+  text-align: center;
+  display: block;
+  line-height:1em;
+  padding-bottom: 2em;
+  color: #FB667A;
+}
+
+h2 a {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #FB667A;
+  text-decoration: none;
+}
+
+.blue { color: #185875; }
+.yellow { color: #FFF842; }
+
+.container2 th h1 {
+	  font-weight: bold;
+	  font-size: 1em;
+  text-align: left;
+  color: #185875;
+}
+
+.container2 td {
+	  font-weight: normal;
+	  font-size: 1em;
+}
+
+.container2 {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 90%;
+	  margin: 0 auto;
+  display: table;
+  padding: 0 0 8em 0;
+}
+
+.container2 td, .container2 th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;
+}
+
+/* Background-color of the odd rows */
+.container2 tr:nth-child(odd) {
+	  background-color: #323C50;
+}
+
+/* Background-color of the even rows */
+.container2 tr:nth-child(even) {
+	  background-color: #2C3446;
+}
+
+.container2 th {
+	  background-color: #1F2739;
+}
+
+.container2 td:first-child { color: #FB667A; }
+
+.container2 tr:hover {
+}
+}
+</style>
 <body>
   <!-- Navigation -->
   <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -53,81 +129,81 @@
                   <li>
                       <a href="/profile">YOU</a>
                   </li>
-
+                  <li>
+                      <a href="/logout">Logout</a>
+                  </li>
               </ul>
           </div>
           <!-- /.navbar-collapse -->
       </div>
       <!-- /.container -->
   </nav>
-
-    <legend><p align="left">USERNAME</p></legend>
-
-   <div class="margini2">
-    <div class="avatar" style="background-image:url(avatar.png)"></div>
-   </div>
-
-       <font size="6"><p align="center">Details</p></font>
-
-     <br></br>
-
-     <div class="margini3">
-        <font size="4"><p> Deal1:</p></font>
-     </div>
-
-     <br></br><br>
-
-     <div class="margini3">
-        <font size="4"><p>Deal2:</p></font>
-     </div>
-
-   <div class="col-md-2">
-       <a class="btn btn-md btn-default btn-block" href="/profile">Details</a>
-   </div>
-
-
-   <br></br><br>
-
-   <div class="margini3">
-      <font size="4"><p>Deal3:</p></font>
-   </div>
-
-
-
-   <div class="col-md-2">
-       <a class="btn btn-md btn-default btn-block" href="/profile/change-password">Change password</a>
-   </div>
-
-   <br></br><br>
-
-   <div class="margini3">
-      <font size="4"><p>Deal4:</p></font>
-   </div>
-
-
-   <div class="col-md-2">
-       <a class="btn btn-md btn-default btn-block" href="/profile/history"">View Deals</a>
-   </div>
-
-   <br></br><br>
-
-   <div class="margini3">
-      <font size="4"><p>Deal5:</p></font>
-   </div>
-
-   <br></br><br>
-
-   <div class="margini3">
-      <font size="4"><p>Deal6:</p></font>
-   </div>
-
-   <br></br><br>
-
-   <div class="margini3">
-      <font size="4"><p>Deal7:</p></font>
-   </div>
+<h1>Created Events</h1>
+<table class="container2">
+	<thead >
+		<tr>
+			<th><h1>Events</h1></th>
+			<th><h1>Date</h1></th>
+			<th><h1>Addres</h1></th>
+			<th><h1>Persons</h1></th>
+		</tr>
+	</thead>
+	<tbody style="color:#a7aebc" !important>
+		<tr>
+			<td><a href="/create-post">Event1</a></td>
+			<td>22-03-2014</td>
+			<td>AcasaLaTemian</td>
+			<td>21</td>
+		</tr>
+		<tr>
+			<td><a href="/create-post">Event2</a></td>
+			<td>24-03-2014</td>
+			<td>AcasaLaTobi</td>
+			<td>22</td>
+		</tr>
+		<tr>
+			<td><a href="/create-post">Event3</a></td>
+			<td>25-03-2014</td>
+			<td>AcasaLaTamsa</td>
+			<td>23</td>
+		</tr>
+    <tr>
+			<td><a href="/create-post">Event4</a></td>
+			<td>26-03-2014</td>
+			<td>AcasaLaGabulu</td>
+			<td>24</td>
+		</tr>
+    <tr>
+			<td><a href="/create-post">Event5</a></td>
+			<td>27-03-2014</td>
+			<td>AcasaLaNisu</td>
+			<td>25</td>
+		</tr>
+    <tr>
+			<td><a href="/create-post">Event6</a></td>
+			<td>28-03-2014</td>
+			<td>AcasaLaRas</td>
+			<td>26</td>
+		</tr>
+	</tbody>
+</table>
 
 
+            <div class="pozaj2">
+                <div class="col-lg-12">
+                    <div class="textj">
+                      <p>Copyright &copy; Your Website 2014</p>
+                    </div>
+
+                    <div class="textj2">
+                      <a href='/logout'>Logout</a>
+                    </div>
+
+                    <div class="textj3">
+                      <a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/register.html">Terms and conditions</a>
+                    </div>
+                </div>
+            </div>
 
 </body>
 </html>

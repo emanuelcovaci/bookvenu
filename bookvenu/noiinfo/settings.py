@@ -129,6 +129,7 @@ USE_TZ = True
 
 NOCAPTCHA = True
 
+LOGIN_URL = '/login/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

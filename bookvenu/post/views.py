@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
-
+from django.contrib.auth.decorators import login_required
 from forms import EventForm
 # Create your views here.
+
+@login_required
 def create_post(request):
     form = EventForm(request.POST or None, request.FILES or None)
     if request.method == 'POST':
