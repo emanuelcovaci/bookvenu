@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from forms import LoginForm,UserRegisterForm,AccRegisterForm
 from django.contrib.auth import logout, authenticate, login
-
+from django.contrib.auth.decorators import login_required
 from .models import Account
 # Create your views here.
 
@@ -50,4 +50,6 @@ def register_page(request):
         'form': form,
         'acc_form' : acc_form,
     })
+
+
 

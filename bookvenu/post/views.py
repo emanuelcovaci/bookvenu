@@ -14,5 +14,6 @@ def create_post(request):
         'form': form
     })
 
+@login_required
 def post(request):
     return render(request, 'posts/Offer-page.html')
