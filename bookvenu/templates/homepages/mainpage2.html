@@ -35,7 +35,6 @@
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}" />
 
 
-
 </head>
   <script>
 
@@ -125,6 +124,14 @@
         <button type="button" class="btn btn-primary">Search</button>
       </div>
     </div>
+
+{% for post in events %}
+    {{ post.name }}
+{% endfor %}
+
+{% for post in events %}
+  <img src= '{{ post.image1.url }}'  class = 'img-responsive'/>
+{% endfor %}
 
       <div class="altceva">
     </div>
