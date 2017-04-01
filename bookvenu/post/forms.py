@@ -14,7 +14,7 @@ class EventForm(forms.ModelForm):
             'price': forms.TextInput({'required': 'required', 'placeholder': 'Price'}),
             'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
-            'category': forms.TextInput({'required': 'required', 'placeholder': 'Category'}),
+            'category': forms.ChoiceField(choices=EventModel.CHOICES,required=True),
 
         }
 

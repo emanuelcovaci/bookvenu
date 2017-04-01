@@ -7,6 +7,12 @@ def upload_location(instance, filename):
     return "%s/%s" % (instance.slug, filename)
 
 class EventModel(models.Model):
+    CHOICES = (
+        ('HOTELS', 'Hotels'),
+        ('RESTAURANTS', 'Restaurants'),
+        ('FESTIVALS', 'Festivals'),
+        ('OTHER', 'Other'),
+    )
     name = models.CharField(max_length=100)
     adress = models.CharField(max_length = 100)
     nrlocuri = models.CharField(max_length=15)
@@ -14,7 +20,7 @@ class EventModel(models.Model):
     price = models.CharField(max_length=15)
     phonenumber = models.CharField(max_length=10)
     details = models.CharField(max_length=1000)
-    category = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, choices=CHOICES,default=1)
     image1 = models.ImageField(upload_to=upload_location,
                               null=True, blank=True)
     image2 = models.ImageField(upload_to=upload_location,

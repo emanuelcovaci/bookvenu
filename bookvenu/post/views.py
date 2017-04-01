@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from forms import EventForm
+from .models import EventModel
 # Create your views here.
 
 @login_required
@@ -10,8 +11,10 @@ def create_post(request):
         if form.is_valid():
             form.save()
             return redirect('/')
+
     return render(request, "posts/post.html", {
-        'form': form
+        'form': form,
+
     })
 
 @login_required
