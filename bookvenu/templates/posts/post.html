@@ -77,7 +77,7 @@
     <div class="col-lg-12">
         <h2 class="page-header" align="center">Post your offer right now</h2>
     </div>
-    <form method="post" enctype="multipart/form-data">
+    <form  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
         <div class="col-md-4">
@@ -160,12 +160,11 @@
 
        <div class="col-md-4">
             <label>Category</label>
-<div class="dropup">
-    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Category
-        <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-                            {{ form.category }}
-    </ul>
+<div >
+
+
+              {{ form.category|add_class:"form-control "|attr:"required:required"}}
+
 
   </div>
            {% if form.category.errors %}

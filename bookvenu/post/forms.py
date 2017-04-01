@@ -1,24 +1,20 @@
 from django import forms
 from datetime import date
 from .models import EventModel
+from category.models import Category
 from django.shortcuts import get_object_or_404
 
 
-class EventForm(forms.ModelForm):
+class CreateEventForm(forms.ModelForm):
     class Meta:
         model = EventModel
-        fields = ['name', 'adress', 'nrlocuri', 'date', 'price', 'phonenumber', 'details', 'category','image1','image2','image3','image4']
-        widgets = {
-            'name': forms.TextInput({'required': 'required', 'placeholder': 'Name'}),
-            'adress': forms.TextInput({'required': 'required', 'placeholder': 'Adress'}),
-            'nrlocuri': forms.TextInput({'required': 'required', 'placeholder': 'Nr.Locuri'}),
-            'date': forms.TextInput({'required': 'required', 'placeholder': 'Date format YYYY-MM-DD'}),
-            'price': forms.TextInput({'required': 'required', 'placeholder': 'Price'}),
-            'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
-            'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
-            'category': forms.ChoiceField({'required': 'required'}),
+        fields = ['name', 'adress', 'nrlocuri', 'date',
+                  'price', 'phonenumber', 'details', 'category',
+                  'image1', 'image2', 'image3', 'image4']
 
-        }
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(CreateEventForm, self).__init__(*args, **kwargs)
 
     def clean_phonenumber(self):
         phonenumber = self.cleaned_data['phonenumber']
@@ -64,7 +60,7 @@ class EventForm(forms.ModelForm):
         return details
 
     def clean_category(self):
-        category = get_object_or_404(EventModel,
+        category = get_object_or_404(Category,
                                      name=self.cleaned_data['category'])
         return category
 
@@ -74,15 +70,15 @@ class EventForm(forms.ModelForm):
         image3 = self.cleaned_data['image3']
         image4 = self.cleaned_data['image4']
         image_names = []
-        if(image1 and not isinstance(image1, (int, float))):
+        if (image1 and not isinstance(image1, (int, float))):
             image_names.append(image1.name)
-        if(image2 and not isinstance(image2, (int, float))):
+        if (image2 and not isinstance(image2, (int, float))):
             image_names.append(image2.name)
-        if(image3 and not isinstance(image3, (int, float))):
+        if (image3 and not isinstance(image3, (int, float))):
             image_names.append(image3.name)
-        if(image4 and not isinstance(image4, (int, float))):
+        if (image4 and not isinstance(image4, (int, float))):
             image_names.append(image4.name)
-        if(len(image_names)-1 == len(set(image_names))):
+        if (len(image_names) - 1 == len(set(image_names))):
             raise forms.ValidationError("You can't upload 2 images"
                                         "that are the same")
         return image4

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'homepages',
     'authentication',
     'post',
+    'category',
     'django_extensions'
 ]
 
