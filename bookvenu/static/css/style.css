@@ -116,7 +116,7 @@
   background-image: url("2.jpg");
   background-repeat: no-repeat;
   width:17%;
-  height:72%;
+  height:95%;
   margin-top: 3.5%;
   position:absolute;
 }
@@ -126,36 +126,40 @@
 }
 
 .ceva1{
-  background-image: url("2.jpg");
-  background-repeat: no-repeat;
-  width:60%;
-  height: 50%;
+  width:55%;
+  height: 45%;
   margin-top: 3.5%;
   margin-left:28%
+
 }
 .ceva3{
-  background-image: url("2.jpg");
-  background-repeat: no-repeat;
+
   width:4%;
   height: 7.3%;
-  margin-top: 0.4%;
+  margin-top: 11%;
   margin-left:28%;
   position:absolute;
 }
 .ceva4{
-  background-image: url("2.jpg");
-  background-repeat: no-repeat;
   width:4%;
   height: 7.3%;
-  margin-top: 0.4%;
+  margin-top: 11%;
   margin-left:32.3%;
+  position:absolute;
+}
+
+.ceva6{
+  width:4%;
+  height: 7.3%;
+  margin-top: 11%;
+  margin-left:36.7%;
   position:absolute;
 }
 
 .ceva5{
   margin-left:28%;
-  position:absolute;
-  margin-top:6%;
+  position:relative;
+  margin-top:14%;
   margin-right:13%;
 }
 

@@ -3,6 +3,7 @@
 
 <head>
 {% load staticfiles %}
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -70,19 +71,37 @@
 
 
   <div class="ceva21">
-    <font size="3"><p>Name:</p></font>
+      {% for post in events %}
+    <font size="3"><p>Name:{{ post.name }}</p></font>
+      {% endfor %}
     <br>
-    <font size="3"><p>Adress:</p></font>
+
+      {% for post in events %}
+    <font size="3"><p>Adress:{{post.adress}}</p></font>
+      {% endfor %}
+
     <br>
     <font size="3"><p>Category:</p></font>
     <br>
-    <font size="3"><p>People:</p></font>
+
+      {% for post in events %}
+    <font size="3"><p>People:{{post.nrlocuri }}</p></font>
+      {% endfor %}
     <br>
-    <font size="3"><p>Date:</p></font>
+
+      {% for post in events %}
+    <font size="3"><p>Date:{{ post.date }}</p></font>
+      {% endfor %}
     <br>
-    <font size="3"><p>Phone number:</p></font>
+
+      {% for post in events %}
+    <font size="3"><p>Phone number: {{post.phonenumber}}</p></font>
+      {% endfor %}
     <br>
-    <font size="3"><p>Price:</p></font>
+
+      {% for post in events %}
+    <font size="3"><p>Price:{{ post.price }}</p></font>
+      {% endfor %}
     <br>
     <font size="3"><p>Author:</p></font>
     <br>
@@ -91,12 +110,27 @@
     </div>
   </div>
 
-
     <div class="ceva1">
+            {% for post in events %}
+        <img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
+        {% endfor %}
     </div>
+
     <div class="ceva3">
+        {% for post in events %}
+        <img src= '{{  post.image2.url }}'  class = 'img-responsive'/></a>
+        {% endfor %}
     </div>
     <div class="ceva4">
+        {% for post in events %}
+        <img src= '{{  post.image3.url }}'  class = 'img-responsive'/></a>
+        {% endfor %}
+    </div>
+
+      <div class="ceva6">
+        {% for post in events %}
+        <img src= '{{  post.image4.url }}'  class = 'img-responsive'/></a>
+        {% endfor %}
     </div>
 
     <div class="ceva5">

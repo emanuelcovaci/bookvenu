@@ -1,6 +1,8 @@
 from django import forms
 from datetime import date
 from .models import EventModel
+from django.shortcuts import get_object_or_404
+
 
 class EventForm(forms.ModelForm):
     class Meta:
@@ -14,7 +16,7 @@ class EventForm(forms.ModelForm):
             'price': forms.TextInput({'required': 'required', 'placeholder': 'Price'}),
             'phonenumber': forms.TextInput({'required': 'required', 'placeholder': 'Phone Number'}),
             'details': forms.TextInput({'required': 'required', 'placeholder': 'Details'}),
-            'category': forms.ChoiceField(choices=EventModel.CHOICES,required=True),
+            'category': forms.ChoiceField({'required': 'required'}),
 
         }
 
@@ -62,7 +64,8 @@ class EventForm(forms.ModelForm):
         return details
 
     def clean_category(self):
-        category = self.cleaned_data['category']
+        category = get_object_or_404(EventModel,
+                                     name=self.cleaned_data['category'])
         return category
 
     def clean_image4(self):

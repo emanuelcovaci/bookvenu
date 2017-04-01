@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, render_to_response
 from django.contrib.auth.decorators import login_required
 from forms import EventForm
 from .models import EventModel
@@ -19,5 +19,9 @@ def create_post(request):
 
 @login_required
 def post(request):
-    return render(request, 'posts/Offer-page.html')
+    event=EventModel.objects.all()
+    return render(request, "posts/Offer-page.html", {
+        'events': event,
+    })
+
 
