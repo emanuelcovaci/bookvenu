@@ -109,29 +109,12 @@
       <button type="button" class="btn btn-primary">Reserve</button>
     </div>
   </div>
-
+{% for post in events %}
     <div class="ceva1">
-            {% for post in events %}
         <img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
-        {% endfor %}
     </div>
+  {% endfor %}
 
-    <div class="ceva3">
-        {% for post in events %}
-        <img src= '{{  post.image2.url }}'  class = 'img-responsive'/></a>
-        {% endfor %}
-    </div>
-    <div class="ceva4">
-        {% for post in events %}
-        <img src= '{{  post.image3.url }}'  class = 'img-responsive'/></a>
-        {% endfor %}
-    </div>
-
-      <div class="ceva6">
-        {% for post in events %}
-        <img src= '{{  post.image4.url }}'  class = 'img-responsive'/></a>
-        {% endfor %}
-    </div>
 
     <div class="ceva5">
       <font size="3"><p>Bookvenue is a website that has the purpose to help people with time.The mechanism of our service is very simple to have better selling and peoples to don't waste timea disponible place for that.We are helping the managers.Bookvenue is a website that has the purpose to help people with time.The mechanism of our service is very simple to have better selling and peoples to don't waste timea disponible place for that.We are helping the managers</p></font>
