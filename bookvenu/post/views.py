@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, render_to_response
 from django.contrib.auth.decorators import login_required
-from forms import CreateEventForm
-from .models import EventModel
+from forms import CreateEventForm,CommentForm
+from .models import EventModel,Comment
 # Create your views here.
 
 @login_required
@@ -26,5 +26,22 @@ def post(request):
     return render(request, "posts/Offer-page.html", {
         'events': event,
     })
+
+
+def get_post(request, name):
+    try:
+        event = EventModel.objects.get(name=name)
+    except EventModel.DoesNotExist:
+        raise Http404("Event does not exist")
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.post = event
+            comment.user = request.user.username
+            comment.save()
+            return redirect('/post/'+event.name)
+    else:
+        return render(request, 'posts/post-details.html', {"event":event})
 
 

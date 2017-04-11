@@ -31,3 +31,17 @@ class EventModel(models.Model):
 
     def get_absolute_url(self):
         return reverse('event', args=[self.slug])
+
+class Comment(models.Model):
+    post = models.ForeignKey(EventModel,related_name = 'comments')
+    user = models.CharField(max_length=100)
+    body = models.TextField()
+    date_created = models.DateTimeField(auto_now_add = True)
+    approved = models.BooleanField(default = True)
+    rating = models.IntegerField(default = 0)
+
+    def approved(self):
+        self.save()
+
+    def str(self):
+        return self.body

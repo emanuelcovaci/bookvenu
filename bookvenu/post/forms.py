@@ -1,6 +1,6 @@
 from django import forms
 from datetime import date
-from .models import EventModel
+from .models import EventModel,Comment
 from category.models import Category
 from django.shortcuts import get_object_or_404
 
@@ -82,3 +82,9 @@ class CreateEventForm(forms.ModelForm):
             raise forms.ValidationError("You can't upload 2 images"
                                         "that are the same")
         return image4
+
+class CommentForm(forms.ModelForm):
+
+    class Meta:
+        model = Comment
+        fields = ['body']

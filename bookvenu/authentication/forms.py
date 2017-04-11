@@ -118,3 +118,30 @@ class AccRegisterForm(forms.ModelForm):
         return country
 
 
+class ChangePass(forms.Form):
+    oldpassword = forms.CharField(max_length=20, min_length=8,
+                                 label="Old password",
+                                 widget=forms.PasswordInput(
+                                     attrs={'required': 'required'}))
+    password = forms.CharField(max_length=20, min_length=8,
+                                 label="New password",
+                                 widget=forms.PasswordInput(
+                                     attrs={'required': 'required'}))
+    retypepassword = forms.CharField(max_length=20, min_length=8,
+                                 label="Type again the new password",
+                                 widget=forms.PasswordInput(
+                                     attrs={'required': 'required'}))
+    def clean_retypepassword(self):
+        password = self.cleaned_data.get('password')
+        password2 = self.cleaned_data.get('retypepassword')
+        if password.isdigit():
+            raise forms.ValidationError("Password is entirely numeric")
+        if password != password2:
+            raise forms.ValidationError("Passwords do not match")
+        if len(password) < 8:
+            raise forms.ValidationError("Password is too short")
+        return password2
+
+
+
+

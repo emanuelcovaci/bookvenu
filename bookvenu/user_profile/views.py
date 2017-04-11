@@ -13,8 +13,6 @@ def profile_detail(request):
         return render(request, "profile/profile-details.html", {
             'form': form,
         })
-def change_password(request):
-    return render(request, 'profile/profile-changepassword.html')
 def history(request):
     return render(request, 'profile/profile-deals.html')
 def get_user_profile(request, username):

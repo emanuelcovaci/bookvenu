@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from forms import LoginForm,UserRegisterForm,AccRegisterForm
+from forms import LoginForm,UserRegisterForm,AccRegisterForm,ChangePass
 from django.contrib.auth import logout, authenticate, login
 from django.contrib.auth.decorators import login_required
 from .models import Account
@@ -50,6 +50,29 @@ def register_page(request):
         'form': form,
         'acc_form' : acc_form,
     })
+
+@login_required
+def change_password(request):
+    errors = []
+    form = ChangePass(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            if request.user.check_password(form.cleaned_data['oldpassword']):
+                if form.cleaned_data['password'] == form.cleaned_data['retypepassword']:
+                    request.user.set_password(form.cleaned_data['password'])
+                    request.user.save()
+                    user = authenticate(username = request.user.username,
+                                        password = form.cleaned_data['password'])
+                    login(request, user)
+                    return redirect('/')
+                else:
+                    errors.append('Passwords do not match')
+            else:
+                errors.append('Old password does not match')
+        else:
+            errors.append('Invalid form')
+    print errors
+    return render(request, "profile/profile-changepassword.html", {'form':form, 'errors':errors})
 
 
 
