@@ -127,39 +127,34 @@
 
 .ceva1{
   width:55%;
-  height: 45%;
   margin-top: 3.5%;
   margin-left:28%
 
 }
 .ceva3{
-
-  width:4%;
+  width:6%;
   height: 7.3%;
-  margin-top: 11%;
   margin-left:28%;
   position:absolute;
 }
 .ceva4{
-  width:4%;
+  width:6%;
   height: 7.3%;
-  margin-top: 11%;
-  margin-left:32.3%;
+  margin-left:34.1%;
   position:absolute;
 }
 
 .ceva6{
-  width:4%;
+  width:6%;
   height: 7.3%;
-  margin-top: 11%;
-  margin-left:36.7%;
+  margin-left:40.2%;
   position:absolute;
 }
 
 .ceva5{
   margin-left:28%;
-  position:relative;
-  margin-top:14%;
+  position:absolute;
+  margin-top:4%;
   margin-right:13%;
 }
 

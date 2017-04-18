@@ -29,8 +29,6 @@ class EventModel(models.Model):
                            null=True, blank=True)
     slug = models.SlugField(default=uuid.uuid1, unique=True)
 
-    def get_absolute_url(self):
-        return reverse('event', args=[self.slug])
 
 class Comment(models.Model):
     post = models.ForeignKey(EventModel,related_name = 'comments')

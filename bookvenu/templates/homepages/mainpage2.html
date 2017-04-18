@@ -112,7 +112,7 @@
 
 {% for post in events %}
 <div class="col-md-2 col-sm-2 mb">
-  <a href="/post-name"><img src= '{{  post.image2.url }}'  class = 'img-responsive'/></a>
+  <a href="/post/{{post.slug}}"><img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
        <p align="center"> {{ post.name }} </p>
   </div>
     {% endfor %}

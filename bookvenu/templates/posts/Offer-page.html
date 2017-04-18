@@ -71,50 +71,60 @@
 
 
   <div class="ceva21">
-      {% for post in events %}
-    <font size="3"><p>Name:{{ post.name }}</p></font>
-      {% endfor %}
-    <br>
 
-      {% for post in events %}
-    <font size="3"><p>Adress:{{post.adress}}</p></font>
-      {% endfor %}
+    <font size="3"><p>Name:{{ events.name }}</p></font>
 
     <br>
-    <font size="3"><p>Category:</p></font>
+
+
+    <font size="3"><p>Adress:{{events.adress}}</p></font>
+
+
+    <br>
+    <font size="3"><p>Category:{{events.category}}</p></font>
     <br>
 
-      {% for post in events %}
-    <font size="3"><p>People:{{post.nrlocuri }}</p></font>
-      {% endfor %}
+
+    <font size="3"><p>People:{{events.nrlocuri }}</p></font>
+
     <br>
 
-      {% for post in events %}
-    <font size="3"><p>Date:{{ post.date }}</p></font>
-      {% endfor %}
+
+    <font size="3"><p>Date:{{ events.date }}</p></font>
+
     <br>
 
-      {% for post in events %}
-    <font size="3"><p>Phone number: {{post.phonenumber}}</p></font>
-      {% endfor %}
+
+    <font size="3"><p>Phone number:{{events.phonenumber}}</p></font>
+
     <br>
 
-      {% for post in events %}
-    <font size="3"><p>Price:{{ post.price }}</p></font>
-      {% endfor %}
+
+    <font size="3"><p>Price:{{ events.price }}</p></font>
+
     <br>
-    <font size="3"><p>Author:</p></font>
+    <font size="3"><p>Author:{{events.author}}</p></font>
     <br>
     <div class="ceva2">
       <button type="button" class="btn btn-primary">Reserve</button>
     </div>
   </div>
-{% for post in events %}
-    <div class="ceva1">
-        <img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
-    </div>
-  {% endfor %}
 
+    <div class="ceva1">
+        <img src= '{{  events.image1.url }}'  class = 'img-responsive'/></a>
+    </div>
+
+      <div class="ceva3">
+        <img src= '{{  events.image2.url }}'  class = 'img-responsive'/></a>
+    </div>
+
+      <div class="ceva4">
+        <img src= '{{  events.image3.url }}'  class = 'img-responsive'/></a>
+    </div>
+
+    <div class="ceva6">
+        <img src= '{{  events.image4.url }}'  class = 'img-responsive'/></a>
+    </div>
 
     <div class="ceva5">
       <font size="3"><p>Bookvenue is a website that has the purpose to help people with time.The mechanism of our service is very simple to have better selling and peoples to don't waste timea disponible place for that.We are helping the managers.Bookvenue is a website that has the purpose to help people with time.The mechanism of our service is very simple to have better selling and peoples to don't waste timea disponible place for that.We are helping the managers</p></font>

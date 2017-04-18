@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect, render_to_response
+from django.shortcuts import render, redirect, render_to_response,get_object_or_404
 from django.contrib.auth.decorators import login_required
 from forms import CreateEventForm,CommentForm
 from .models import EventModel,Comment
+from authentication.models import Account
 # Create your views here.
 
 @login_required
@@ -21,10 +22,12 @@ def create_post(request):
 
 
 @login_required
-def post(request):
-    event=EventModel.objects.all()
+def post(request,slug):
+
+    event = get_object_or_404(EventModel, slug=slug)
     return render(request, "posts/Offer-page.html", {
         'events': event,
+
     })
 
 
