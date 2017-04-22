@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'authentication',
     'post',
     'category',
+    'rest_framework',
     'django_extensions'
 ]
 

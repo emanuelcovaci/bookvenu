@@ -2,7 +2,13 @@ from django.shortcuts import render, redirect, render_to_response,get_object_or_
 from django.contrib.auth.decorators import login_required
 from forms import CreateEventForm,CommentForm
 from .models import EventModel,Comment
-from authentication.models import Account
+from django.views.decorators.http import require_POST
+from django.http import HttpResponse
+try:
+    from django.utils import simplejson as json
+except ImportError:
+    import json
+
 # Create your views here.
 
 @login_required
@@ -25,17 +31,6 @@ def create_post(request):
 def post(request,slug):
 
     event = get_object_or_404(EventModel, slug=slug)
-    return render(request, "posts/Offer-page.html", {
-        'events': event,
-
-    })
-
-
-def get_post(request, name):
-    try:
-        event = EventModel.objects.get(name=name)
-    except EventModel.DoesNotExist:
-        raise Http404("Event does not exist")
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -43,8 +38,32 @@ def get_post(request, name):
             comment.post = event
             comment.user = request.user.username
             comment.save()
-            return redirect('/post/'+event.name)
-    else:
-        return render(request, 'posts/post-details.html', {"event":event})
+    return render(request, "posts/Offer-page.html", {
+        'events': event,
+
+    })
+
+@login_required
+@require_POST
+def like(request):
+    if request.method == 'POST':
+        user = request.user
+        slug = request.POST.get('slug', None)
+        company = get_object_or_404(EventModel, slug=slug)
+
+        if company.likes.filter(id=user.id).exists():
+            # user has already liked this company
+            # remove like/user
+            company.likes.remove(user)
+            message = 'You disliked this'
+        else:
+            # add a new like for a company
+            company.likes.add(user)
+            message = 'You liked this'
+
+    ctx = {'likes_count': company.total_likes, 'message': message}
+    # use mimetype instead of content_type if django < 5
+    return HttpResponse(json.dumps(ctx), content_type='application/json')
+
 
 
