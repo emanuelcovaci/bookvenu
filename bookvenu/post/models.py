@@ -38,31 +38,6 @@ class EventModel(models.Model):
         return self.likes.count()
 
 
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(EventModel, self).save(*args, **kwargs)
-
-def create_slug(instance,new_slug = None):
-    slug=slugify(instance.name)
-    if new_slug is not None:
-        slug=new_slug
-    qs=EventModel.objects.filter(slug=slug).ordered_by("-id")
-    exists = qs.exists()
-    if exists:
-        new_slug="%s-%s" %(slug,qs.first().id)
-        return create_slug(instance,new_slug=new_slug)
-    return slug
-
-def pre_save_post_receiver(sender,instance,*args,**kwargs):
-    slug=slugify(instance.name)
-    exists=EventModel.objects.filter(slug=slug).exists()
-    if exists:
-        slug="%s-%s" %(slug,instance.id)
-    instance.slug=slug
-
-pre_save.connect(pre_save_post_receiver,sender=EventModel)
-
-
 class Comment(models.Model):
     post = models.ForeignKey(EventModel,related_name = 'comments')
     user = models.CharField(max_length=100)

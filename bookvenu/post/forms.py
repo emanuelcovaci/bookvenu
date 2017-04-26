@@ -88,3 +88,58 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
         fields = ['body']
+
+
+
+class Edit_Post(forms.ModelForm):
+    class Meta:
+        model = EventModel
+        fields = ['name', 'adress', 'nrlocuri', 'date',
+                  'price', 'phonenumber', 'details']
+
+    def __init__(self, *args, **kwargs):
+        self.user = kwargs.pop('user', None)
+        super(Edit_Post, self).__init__(*args, **kwargs)
+
+    def clean_phonenumber(self):
+        phonenumber = self.cleaned_data['phonenumber']
+        if phonenumber[0] != '0' or phonenumber[1] != '7' or len(phonenumber) != 10 or phonenumber.isdigit() == False:
+            raise forms.ValidationError("Invalid phonenumber")
+        return phonenumber
+
+    def clean_price(self):
+        price = self.cleaned_data['price']
+        if price.isdigit() == False:
+            raise forms.ValidationError("Invalid price")
+        return price
+
+    def clean_nrlocuri(self):
+        nrlocuri = self.cleaned_data['nrlocuri']
+        if nrlocuri.isdigit() == False:
+            raise forms.ValidationError("Invalid input")
+        return nrlocuri
+
+    def clean_name(self):
+        name = self.cleaned_data['name']
+        if name.isdigit():
+            raise forms.ValidationError("Name contains invalid characters")
+        return name
+
+    def clean_adress(self):
+        adress = self.cleaned_data['adress']
+        return adress
+
+    def clean_data(self):
+        data = self.cleaned_data['data']
+        if data < date.today():
+            raise forms.ValidationError("Date is not valid")
+        else:
+            delta = data - date.today()
+            if delta.days > 31:
+                raise forms.ValidationError("Task can scheduled with at"
+                                            "most 31 days before")
+        return data
+
+    def clean_details(self):
+        details = self.cleaned_data['details']
+        return details

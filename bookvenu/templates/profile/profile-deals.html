@@ -138,6 +138,7 @@ h2 a {
       </div>
       <!-- /.container -->
   </nav>
+
 <h1>Created Events</h1>
 <table class="container2">
 	<thead >
@@ -149,61 +150,59 @@ h2 a {
 		</tr>
 	</thead>
 	<tbody style="color:#a7aebc" !important>
+    {% for post in events %}
 		<tr>
-			<td><a href="/create-post">Event1</a></td>
-			<td>22-03-2014</td>
-			<td>AcasaLaTemian</td>
+
+			<td><a href="/edit/{{post.slug}}/">{{ post.name }}</a></td>
+			<td>{{ post.date }}</td>
+			<td>{{ post.adress }}</td>
 			<td>21</td>
+
 		</tr>
-		<tr>
-			<td><a href="/create-post">Event2</a></td>
-			<td>24-03-2014</td>
-			<td>AcasaLaTobi</td>
-			<td>22</td>
-		</tr>
-		<tr>
-			<td><a href="/create-post">Event3</a></td>
-			<td>25-03-2014</td>
-			<td>AcasaLaTamsa</td>
-			<td>23</td>
-		</tr>
-    <tr>
-			<td><a href="/create-post">Event4</a></td>
-			<td>26-03-2014</td>
-			<td>AcasaLaGabulu</td>
-			<td>24</td>
-		</tr>
-    <tr>
-			<td><a href="/create-post">Event5</a></td>
-			<td>27-03-2014</td>
-			<td>AcasaLaNisu</td>
-			<td>25</td>
-		</tr>
-    <tr>
-			<td><a href="/create-post">Event6</a></td>
-			<td>28-03-2014</td>
-			<td>AcasaLaRas</td>
-			<td>26</td>
-		</tr>
+    {% endfor %}
 	</tbody>
 </table>
 
+      <footer>
+        <div class="footer" id="footer">
+            <div class="container margini">
+                <div class="row">
 
-            <div class="pozaj2">
-                <div class="col-lg-12">
-                    <div class="textj">
-                      <p>Copyright &copy; Your Website 2014</p>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> About us </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> General links </h3>
+                        <ul>
+                            <li> <a href="/register"> Sign up </a> </li>
+                            <li> <a href="/logout"> Logout </a> </li>
+                            <li> <a href="/profile"> Profile </a> </li>
+                            <li> <a href="/create-post"> Create Post </a> </li>
+                        </ul>
                     </div>
 
-                    <div class="textj2">
-                      <a href='/logout'>Logout</a>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Contac us </h3>
+                        <p>You can contact us writing us an mail at adress:
+                            mihai.temian@gmail.com</p>
                     </div>
 
-                    <div class="textj3">
-                      <a href="file:///home/temi4000/Desktop/Project/startbootstrap-modern-business-gh-pages/register.html">Terms and conditions</a>
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Social</h3>
+                        <ul class="social">
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        </ul>
                     </div>
+
                 </div>
+                <!--/.row-->
             </div>
+            <!--/.container-->
+        </div>
+    </footer>
 
 </body>
 </html>

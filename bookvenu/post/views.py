@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from forms import CreateEventForm,CommentForm
+from forms import CreateEventForm,CommentForm,Edit_Post
 from .models import EventModel,Comment
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
@@ -52,18 +52,27 @@ def like(request):
         company = get_object_or_404(EventModel, slug=slug)
 
         if company.likes.filter(id=user.id).exists():
-            # user has already liked this company
-            # remove like/user
+
             company.likes.remove(user)
             message = 'You disliked this'
         else:
-            # add a new like for a company
+
             company.likes.add(user)
             message = 'You liked this'
 
     ctx = {'likes_count': company.total_likes, 'message': message}
-    # use mimetype instead of content_type if django < 5
+
     return HttpResponse(json.dumps(ctx), content_type='application/json')
 
 
-
+def edit(request,slug):
+    post = get_object_or_404(EventModel, slug=slug)
+    form = Edit_Post(request.POST or None,instance=post, user=request.user)
+    if request.method == 'POST':
+        if form.is_valid():
+           form.save()
+           return redirect('/')
+    return render(request, 'posts/Edit_post.html', {
+        'form': form,
+        'post':post,
+    })
