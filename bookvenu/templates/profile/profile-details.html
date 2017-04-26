@@ -2,6 +2,7 @@
 
 <head>
 {% load staticfiles %}
+    {% load widget_tweaks %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,66 +88,69 @@
         <i class="fa fa-coffee"></i>
         This is an <strong>.alert</strong>. Use this to show important messages to the user.
       </div>
+        <form method="post">
+        {%csrf_token%}
+    <label>Username</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
 
-      <h3>Personal info</h3>
-      <form class="form-horizontal" role="form">
-        <div class="form-group">
-          <label class="col-lg-3 control-label">First name:</label>
-          <div class="col-lg-8">
-            <input class="form-control"  type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Last name:</label>
-          <div class="col-lg-8">
-            <input class="form-control"  type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Adress:</label>
-          <div class="col-lg-8">
-            <input class="form-control"  type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Email:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-lg-3 control-label">Phonenumber:</label>
-          <div class="col-lg-8">
-            <input class="form-control" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Username:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">Country:</label>
-          <div class="col-md-8">
-            <input class="form-control" type="text">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="col-md-3 control-label">City:</label>
-          <div class="col-md-8">
-            <input class="form-control"  type="text">
-          </div>
-        </div>
+					  {{ form.username|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+            <label>First Name</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.first_name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+            <label>Last name</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ form.last_name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+
+            <label>Country</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ account_form.country|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+
+            <label>Phonenumber</label>
+                    <div class="input-group">
+                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+                      {{ account_form.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+
+
+            <label>City</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+
+					  {{ account_form.city|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
+
+            <label>E-mail</label>
+					<div class="input-group">
+					  <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-envelope"></span></span>
+
+					  {{ form.email|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+					</div>
+
         <div class="form-group">
           <label class="col-md-3 control-label"></label>
           <div class="col-md-8">
-            <input class="btn btn-primary" value="Save Changes" type="button">
+            <button type="submit">Save changes</button>
             <span></span>
-            <input class="btn btn-default" value="Cancel" type="reset">
+        </form>
           </div>
         </div>
-      </form>
     </div>
   </div>
 </div>

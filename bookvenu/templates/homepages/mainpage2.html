@@ -34,6 +34,27 @@
     <!--Font Awesome (added because you use icons in your prepend/append)-->
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}" />
     <link rel="stylesheet" href="/maps/documentation/javascript/demos/demos.css">
+    <style>
+                            #img_size {
+                                width: 845px;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            @media only screen and (max-width: 599px){
+                                #img_size {
+                                    width: 287px;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                              }
+                              @media only screen and (max-width: 770px and min-width:600px){
+                                #img_size {
+                                    width: 700px;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                              }
+                        </style>
 
 </head>
 
@@ -114,7 +135,7 @@
             <div class="col-md-9">
                <div class="row carousel-holder">
                    <div class="col-md-12">
-                        <img src="static/aaa.jpg">
+                        <img id="img_size" src="static/aaa.jpg">
                    </div>
                </div>
                                                     <br><br>
