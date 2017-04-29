@@ -92,43 +92,10 @@
 <div class="container">
         <div class="row">
             <div class="col-md-3">
-
-                  <div class="col-md-12">
-                    <label for="category">Category:</label>
-                    <select id="category" name="category" class="form-control">
-                      <option value="1">Hotels</option>
-                      <option value="2">Restaurants</option>
-                      <option value="3">Business Meeting</option>
-                      <option value="4">Other</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="number-person">People:</label>
-                    <select id="number-person" name="number-person" class="form-control">
-                      <option value="1">Just a person</option>
-                      <option value="2">Two persons</option>
-                      <option value="3">Three persons</option>
-                      <option value="4">Four persons</option>
-                      <option value="5">More than five persons</option>
-                    </select>
-                  </div>
-
-                  <div class="col-md-12">
-                    <label for="price">Price:</label>
-                    <input class="form-control" id="price" type="text">
-                  </div>
-
-
-                  <div class="col-md-12">
-                      <label for="date">Date:</label>
-                      <input class="form-control" id="date" type="text">
-                  </div>
-
-
-
-                    <button type="button" class="btn btn-primary">Search</button>
-
+                <form method="GET" action="">
+                    <input type="text" name="q" placeholder="Search posts" value='{{ request.GET.q }}'/>
+                    <input type="submit" value="Search"/>
+                </form>
             </div>
 
 
