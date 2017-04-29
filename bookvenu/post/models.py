@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from category.models import Category
 import uuid
+from django.utils.text import slugify
 from django.conf import settings
 from django.db.models.signals import pre_save
 
@@ -29,21 +30,54 @@ class EventModel(models.Model):
                            null=True, blank=True)
     image4 = models.ImageField(upload_to=upload_location,
                            null=True, blank=True)
-    slug = models.SlugField(default=uuid.uuid1, unique=True)
-    likes = models.ManyToManyField(User, related_name='likes')
+    slug = models.SlugField(unique=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='likes')
 
-
-    @property
     def total_likes(self):
         return self.likes.count()
 
+    def get_absolute_url(self):
+        return reverse("post:post-get", kwargs={"slug": self.slug})
+
+    def get_like_url(self):
+        return reverse("post:like-toggle", kwargs={"slug": self.slug})
+
+    def get_delete_url(self):
+        return reverse("post:delete-post", kwargs={"slug": self.slug})
+
+
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.name)
+    if new_slug is not None:
+        slug = new_slug
+    qs = EventModel.objects.filter(slug=slug).ordered_by("-id")
+    exists = qs.exists()
+    if exists:
+        new_slug = "%s-%s" % (slug, qs.first().id)
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
+
+def pre_save_post_receiver(sender, instance, *args, **kwargs):
+    slug = slugify(instance.name)
+    exists = EventModel.objects.filter(slug=slug).exists()
+    if exists:
+        slug = "%s-%s" % (slug, instance.id)
+    instance.slug = slug
+
+
+pre_save.connect(pre_save_post_receiver, sender=EventModel)
+
 
 class Comment(models.Model):
-    post = models.ForeignKey(EventModel,related_name = 'comments')
-    user = models.CharField(max_length=100)
+    post = models.ForeignKey(EventModel, related_name='comments')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, default=1)
     body = models.TextField()
-    date_created = models.DateTimeField(auto_now_add = True)
-    approved = models.BooleanField(default = True)
+    date_created = models.DateTimeField(auto_now_add=True)
+    approved = models.BooleanField(default=True)
+    parent = models.ForeignKey("self", blank=True, null=True)
+    is_parent = models.BooleanField(default=True)
+    likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name='comm_likes')
 
     class Meta:
         ordering = ['-date_created']
@@ -51,6 +85,17 @@ class Comment(models.Model):
     def approved(self):
         self.save()
 
+    def total_likes(self):
+        return self.likes.count()
+
     def __str__(self):
         return self.body
 
+    def children(self):
+        return Comment.objects.filter(parent=self)
+
+    def get_like_url(self):
+        return reverse("post:comm-toggle", kwargs={"id": self.id})
+
+    def get_delete_comm(self):
+        return reverse("post:delete-comment", kwargs={'id': self.id})

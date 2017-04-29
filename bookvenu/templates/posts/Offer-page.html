@@ -110,9 +110,16 @@
     <br>
     <font size="3"><p>Author:{{events.author}}</p></font>
     <br>
+      <p><a class='like-btn' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}'>{{ events.total_likes }} Likes</a></p>
+
     <div class="ceva2">
       <button type="button" class="btn btn-primary">Reserve</button>
     </div>
+          {% if events.author == user %}
+    <p><a href='{{ events.get_delete_url }}'>Delete</a></p>
+    {% endif %}
+      </div>
+
   </div>
 
   <div class="slider">
@@ -136,22 +143,7 @@
       <font size="3"><p>{{events.details}}</p></font>
 
 
-        <div class="row">
-            <form action="." method='post'>
-                {% csrf_token %}
-                        <div class="col-sm-12">
-                            <label class="col-sm-2 control-label">Comment</label>
-                            <div class="col-sm-12">
-                              <textarea class="form-control" name="body"  rows="5" value="{{form.body}}"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
-                            </div>
-                        </div>
-            </form>
-        </div>
+
 
 
 <div class="container">
@@ -159,8 +151,8 @@
         <div class="col-sm-12">
             <h3>Comments</h3>
         </div><!-- /col-sm-12 -->
-    </div><!-- /row -->
-    {% for comment in events.comments.all %}
+
+{% for comment in comm_parent %}
     <div class="row">
         <div class="col-sm-1">
             <div class="thumbnail">
@@ -172,18 +164,159 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
+                    {% if comment.user == user %}
+                        <p><a href='{{comment.get_delete_comm}}'>Delete Comment</a></p>
+                      {% endif %}
+                    <p><a class='like-btn' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}'>{{ comment.total_likes }} Likes</a></p>
                 </div>
 
                 <div class="panel-body">
                     {{ comment.body }}
                 </div><!-- /panel-body -->
+
             </div><!-- /panel panel-default -->
+            <div class="row">
+                {% for reply in comment.children %}
+                <div class="col-sm-2">
+                    <div class="thumbnail">
+                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                    </div><!-- /thumbnail -->
+                </div><!-- /col-sm-1 -->
+
+                <div class="col-sm-10">
+                    <div class="panel panel-comment panel-default">
+                        <div class="panel-heading-comment panel-heading">
+                             <strong>{{ reply.user }}</strong> <span class="text-muted">{{ reply.date_created}}</span>
+                              {% if reply.user == user %}
+                                <p><a href='{{ reply.get_delete_comm }}'>Delete Comment</a></p>
+                              {% endif %}
+                        </div>
+                        <div class="panel-body">
+                        {{ reply.body }}
+                        </div><!-- /panel-body -->
+                    </div><!-- /panel panel-default -->
+                </div><!-- /col-sm-5 -->
+                {% endfor %}
+            </div><!-- /row -->
+                        <form action="." method='post'>
+                                    {% csrf_token %}
+                                      <strong>Reply</strong>
+                                        <input type='hidden' name='parent_id' value={{comment.id}}>
+                                        <input type="text" name="body" value="{{form.body}}"><br>
+
+                                                <div class="col-sm-2">
+                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
+                                                </div>
+
+                                </form>
         </div><!-- /col-sm-5 -->
-    </div>
-    {% endfor %}
+    </div><!-- /row -->
+        <br>
+{% endfor %}
+
+              </form>
+        <div class="row">
+            <form action="." method='post'>
+                {% csrf_token %}
+                        <div class="col-sm-12">
+                            <label class="col-sm-2 control-label">Comment </label><br/><br/>
+                            <div class="col-sm-6">
+                              <textarea class="form-control" name="body"  rows="5" value="{{form.body}}"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-12">
+                                <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
+                            </div>
+                        </div>
+            </form>
+
+              <br>
+        </div>
+</div>
 </div>
 
- </form>
+
+
+<script>
+     $(document).ready(function(){
+          function updateText(btn, newCount, verb){
+          btn.attr("data-likes", newCount)
+          btn.text(newCount + " " + verb)
+      }
+      $(".like-btn").click(function(e){
+        e.preventDefault()
+        var this_ = $(this)
+        var likeUrl = this_.attr("data-href")
+        var likeCount = parseInt(this_.attr("data-likes")) | 0
+        var addLike = likeCount + 1
+        var removeLike = likeCount - 1
+        var verb = "Likes"
+        if( this.ajax ){
+                    this.ajax.abort();
+                }
+        this.ajax = $.ajax({
+            url: likeUrl,
+            method: "GET",
+            data: {},
+            success: function(data){
+              console.log(data)
+              var newLikes;
+              if (data.liked){
+                  updateText(this_, addLike, verb)
+              } else {
+                  updateText(this_, removeLike, verb)
+                  // remove one like
+              }
+            }, error: function(data){
+              console.log(data)
+              console.log("error")
+            }
+          })
+
+      })
+  })
+    </script></form>
+    <footer>
+        <div class="footer">
+            <div class="container margini">
+
+
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> About us </h3>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
+                    </div>
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> General links </h3>
+                        <ul>
+                            <li> <a href="/register"> Sign up </a> </li>
+                            <li> <a href="/logout"> Logout </a> </li>
+                            <li> <a href="/profile"> Profile </a> </li>
+                            <li> <a href="/create-post"> Create Post </a> </li>
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
+                        <h3> Contac us </h3>
+                        <p>You can contact us writing us an mail at adress:
+                            mihai.temian@gmail.com</p>
+                    </div>
+
+                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
+                        <h3> Social</h3>
+                        <ul class="social">
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
+                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <!--/.row-->
+            </div>
+            <!--/.container-->
+        </div>
+    </footer>
 </body>
 
 </html>
