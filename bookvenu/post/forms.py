@@ -10,7 +10,7 @@ class CreateEventForm(forms.ModelForm):
         model = EventModel
         fields = ['name', 'adress', 'nrlocuri', 'date',
                   'price', 'phonenumber', 'details', 'category',
-                  'image1', 'image2', 'image3', 'image4']
+                  'image1', 'image2', 'image3', 'image4', 'site']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
@@ -58,6 +58,10 @@ class CreateEventForm(forms.ModelForm):
     def clean_details(self):
         details = self.cleaned_data['details']
         return details
+
+    def clean_site(self):
+        site = self.cleaned_data['site']
+        return site
 
     def clean_category(self):
         category = get_object_or_404(Category,
