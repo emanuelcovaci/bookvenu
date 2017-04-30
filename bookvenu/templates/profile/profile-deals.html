@@ -32,7 +32,32 @@
 
     <!--Font Awesome (added because you use icons in your prepend/append)-->
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}"/>
+        <style>
 
+            .footer{
+                background: #B2BEB5;
+                height:200px;
+                position: absolute;
+                width: 100%;
+                bottom:0;
+                border-bottom: 1px solid #CCCCCC;
+                border-top: 1px solid #DDDDDD;
+}
+
+                            @media only screen and (max-width: 1000px){
+                                .footer{
+                                    	background: #B2BEB5;
+                                        height:200px;
+                                        position: relative;
+                                        width: 100%;
+                                        bottom:0;
+                                        border-bottom: 1px solid #CCCCCC;
+                                        border-top: 1px solid #DDDDDD;
+                                }
+                              }
+
+
+        </style>
 </head>
 <style type="text/css">
 

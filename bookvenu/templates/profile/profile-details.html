@@ -33,7 +33,32 @@
 
     <!--Font Awesome (added because you use icons in your prepend/append)-->
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}"/>
+        <style>
 
+            .footer{
+                background: #B2BEB5;
+                height:200px;
+                position: absolute;
+                width: 100%;
+                bottom:0;
+                border-bottom: 1px solid #CCCCCC;
+                border-top: 1px solid #DDDDDD;
+}
+
+                            @media only screen and (max-width: 1000px){
+                                .footer{
+                                    	background: #B2BEB5;
+                                        height:200px;
+                                        position: relative;
+                                        width: 100%;
+                                        bottom:0;
+                                        border-bottom: 1px solid #CCCCCC;
+                                        border-top: 1px solid #DDDDDD;
+                                }
+                              }
+
+
+        </style>
 </head>
 
 <body>
@@ -69,11 +94,7 @@
   <div class="row">
     <!-- left column -->
     <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="text-center">
-        <img src="https://fb-s-b-a.akamaihd.net/h-ak-xfa1/v/t1.0-1/c9.0.160.160/p160x160/420257_10151474103567424_1224916620_n.jpg?oh=0932a7be9adb74fd949d0211d9128ad7&oe=58BA7A17&__gda__=1488564886_feb0fc02d6307304a3d43aecff5a804a" class="avatar img-circle img-thumbnail" alt="avatar">
-        <h6>Upload a different photo...</h6>
-        <input type="file" class="text-center center-block well well-sm">
-      </div>
+
 
       <a class="btn btn-md btn-default btn-block" href="/profile/history">View Deals</a>
       <a class="btn btn-md btn-default btn-block" href="/profile">Details</a>
@@ -83,11 +104,6 @@
     </div>
     <!-- edit form column -->
     <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
-      <div class="alert alert-info alert-dismissable">
-        <a class="panel-close close" data-dismiss="alert">×</a>
-        <i class="fa fa-coffee"></i>
-        This is an <strong>.alert</strong>. Use this to show important messages to the user.
-      </div>
         <form method="post">
         {%csrf_token%}
     <label>Username</label>

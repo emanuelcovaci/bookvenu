@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<div lang="en">
 
 <head>
 {% load staticfiles %}
@@ -74,8 +74,8 @@
       <!-- /.container -->
   </nav>
 
-
-  <div class="ceva21">
+<div class="col-lg-3">
+<div class="ceva21">
 
     <font size="3"><p>Name:{{ events.name }}</p></font>
 
@@ -122,9 +122,10 @@
           {% if events.author == user %}
     <p><a href='{{ events.get_delete_url }}'>Delete</a></p>
     {% endif %}
-      </div>
+</div>
+</div>
 
-  </div>
+<div class="col-lg-9">
 
   <div class="slider">
     <div class="ceva1">
@@ -142,12 +143,12 @@
     <div class="ceva6">
         <img src= '{{  events.image4.url }}'  class = 'img-responsive'/></a>
     </div>
-  </div>
     <div class="ceva5">
       <font size="3"><p>{{events.details}}</p></font>
+    </div>
+  </div>
 
-
-
+<br><br><br><br>
 
 
 <div class="container">
@@ -215,6 +216,7 @@
                                 </form>
         </div><!-- /col-sm-5 -->
     </div><!-- /row -->
+    </div>
         <br>
 {% endfor %}
 
@@ -237,9 +239,9 @@
 
               <br>
         </div>
-</div>
-</div>
+    </div>
 
+</div>
 
 
 <script>
@@ -280,47 +282,10 @@
 
       })
   })
-    </script></form>
-    <footer>
-        <div class="footer">
-            <div class="container margini">
+    </script>
 
+</form>
 
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> About us </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> General links </h3>
-                        <ul>
-                            <li> <a href="/register"> Sign up </a> </li>
-                            <li> <a href="/logout"> Logout </a> </li>
-                            <li> <a href="/profile"> Profile </a> </li>
-                            <li> <a href="/create-post"> Create Post </a> </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Contac us </h3>
-                        <p>You can contact us writing us an mail at adress:
-                            mihai.temian@gmail.com</p>
-                    </div>
-
-                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                        <h3> Social</h3>
-                        <ul class="social">
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!--/.row-->
-            </div>
-            <!--/.container-->
-        </div>
-    </footer>
 </body>
 
 </html>

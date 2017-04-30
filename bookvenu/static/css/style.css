@@ -114,10 +114,8 @@
 .ceva21{
   background-image: url("2.jpg");
   background-repeat: no-repeat;
-  width:17%;
   height:95%;
-  margin-top: 3.5%;
-  position:absolute;
+  margin-top: 11.5%;
 }
 
 .ceva2{
@@ -125,33 +123,31 @@
 }
 
 .ceva1{
-  width:55%;
+  width:90%;
   margin-top: 3.5%;
-  margin-left:28%
-
 }
 .ceva3{
   width:6%;
   height: 7.3%;
-  margin-left:28%;
   position:absolute;
 }
 .ceva4{
   width:6%;
   height: 7.3%;
-  margin-left:34.1%;
   position:absolute;
+  margin-left:6%;
 }
+
+
 
 .ceva6{
   width:6%;
   height: 7.3%;
-  margin-left:40.2%;
   position:absolute;
+  margin-left:12%;
 }
 
 .ceva5{
-  margin-left:28%;
   position:absolute;
   margin-top:4%;
   margin-right:13%;
@@ -287,6 +283,21 @@
     }
 }
 
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+}
+
+.alb{
+    background-color:#ffffff;
+    height:100%;
+    margin-left:15%;
+    margin-right:15%;
+}
 
 .anunturi{
     position:relative;
@@ -294,13 +305,23 @@
 
 .footer{
 	background: #B2BEB5;
-	height:auto;
-	padding-bottom: 30px;
-	position: relative;
+	height:200px;
+	position: absolute;
 	width: 100%;
 	border-bottom: 1px solid #CCCCCC;
 	border-top: 1px solid #DDDDDD;
 }
+
+                            @media only screen and (max-width: 1000px){
+                                .footer{
+                                    	background: #B2BEB5;
+                                        height:200px;
+                                        position: relative;
+                                        width: 100%;
+                                        border-bottom: 1px solid #CCCCCC;
+                                        border-top: 1px solid #DDDDDD;
+                                }
+                              }
 
 .margini{
     margin-left:17%;
@@ -309,4 +330,37 @@
 .map{
     height:20%;
     width:60%;
+}
+
+
+#custom-search-input{
+    padding: 3px;
+    border: solid 1px #E4E4E4;
+    border-radius: 6px;
+    background-color: #fff;
+}
+
+#custom-search-input input{
+    border: 0;
+    box-shadow: none;
+}
+
+#custom-search-input button{
+    margin: 2px 0 0 0;
+    background: none;
+    box-shadow: none;
+    border: 0;
+    color: #666666;
+    padding: 0 8px 0 10px;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input button:hover{
+    border: 0;
+    box-shadow: none;
+    border-left: solid 1px #ccc;
+}
+
+#custom-search-input .glyphicon-search{
+    font-size: 23px;
 }
