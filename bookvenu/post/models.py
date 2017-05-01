@@ -19,6 +19,7 @@ class EventModel(models.Model):
     nrlocuri = models.CharField(max_length=15)
     date = models.CharField(max_length=15)
     site = models.CharField(max_length=50,default='')
+    finaldate = models.CharField(max_length=15)
     price = models.CharField(max_length=15)
     phonenumber = models.CharField(max_length=10)
     details = models.CharField(max_length=1000)

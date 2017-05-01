@@ -99,6 +99,9 @@
 
     <br>
 
+    <font size="3"><p>Final Date:{{ events.finaldate }}</p></font>
+
+    <br>
 
     <font size="3"><p>Phone number:{{events.phonenumber}}</p></font>
 
@@ -114,14 +117,14 @@
       <br>
     <font size="3"><p>Site:{{events.site}}</p></font>
       <br>
-      <p><a class='like-btn' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}'>{{ events.total_likes }} Likes</a></p>
-
     <div class="ceva2">
       <button type="button" class="btn btn-primary">Reserve</button>
     </div>
           {% if events.author == user %}
-    <p><a href='{{ events.get_delete_url }}'>Delete</a></p>
+    <a href='{{event.get_delete_rl}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
     {% endif %}
+        <a class='like-btn btn btn-xs btn-primary' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ events.total_likes }} Like</a>
+
 </div>
 </div>
 
@@ -170,9 +173,9 @@
                 <div class="panel-heading">
                     <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
                     {% if comment.user == user %}
-                        <p><a href='{{comment.get_delete_comm}}'>Delete Comment</a></p>
+                    <a href='{{comment.get_delete_comm}}' class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-minus-sign"></span> Delete comment</a>
                       {% endif %}
-                    <p><a class='like-btn' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}'>{{ comment.total_likes }} Likes</a></p>
+                    <a class='like-btn btn btn-xs btn-primary' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ comment.total_likes }} Like</a>
                 </div>
 
                 <div class="panel-body">
@@ -193,7 +196,7 @@
                         <div class="panel-heading-comment panel-heading">
                              <strong>{{ reply.user }}</strong> <span class="text-muted">{{ reply.date_created}}</span>
                               {% if reply.user == user %}
-                                <p><a href='{{ reply.get_delete_comm }}'>Delete Comment</a></p>
+                            <a href='{{ reply.get_delete_comm }}' class="btn btn-xs btn-primary"><span class="glyphicon glyphicon-minus-sign"></span> Delete reply</a>
                               {% endif %}
                         </div>
                         <div class="panel-body">

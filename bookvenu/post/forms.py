@@ -10,7 +10,7 @@ class CreateEventForm(forms.ModelForm):
         model = EventModel
         fields = ['name', 'adress', 'nrlocuri', 'date',
                   'price', 'phonenumber', 'details', 'category',
-                  'image1', 'image2', 'image3', 'image4', 'site']
+                  'image1', 'image2', 'image3', 'image4', 'site', 'finaldate']
 
     def __init__(self, *args, **kwargs):
         self.user = kwargs.pop('user', None)
@@ -54,6 +54,7 @@ class CreateEventForm(forms.ModelForm):
                 raise forms.ValidationError("Task can scheduled with at"
                                             "most 31 days before")
         return data
+
 
     def clean_details(self):
         details = self.cleaned_data['details']

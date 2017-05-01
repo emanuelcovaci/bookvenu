@@ -1,4 +1,3 @@
-from django.db.models import Q
 from django.shortcuts import render_to_response
 from post.models import EventModel
 

@@ -123,7 +123,25 @@
         {% endif %}
     </div>
 
-        <br></br><br><br></br>
+            <div class="col-md-4">
+            <label>Final Date</label>
+                    <div class="input-group" >
+                      <span class="input-group-addon" id="basic-addon1" ><span class="glyphicon glyphicon-calendar"></span></span>
+
+                      {{ form.finaldate|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+                    </div>
+        {% if form.finaldate.errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                        <strong>Warning!</strong>
+                        {% for errors in form.finaldate.errors %}
+                        {{ errors }}
+                        {% endfor %}
+                    </div>
+        {% endif %}
+    </div>
+
+        <br></br><br><br>
 
        <div class="col-md-4">
             <label>Adress</label>
@@ -142,7 +160,7 @@
                                                             </div>
                                              {% endif %}
        </div>
-        <br><br><br><br>
+        <br><br><br>
 
        <div class="col-md-4">
         <label>Phone number</label>
@@ -205,7 +223,7 @@
 
        </div>
 
-        <br><br><br><br>
+        <br><br><br>
 
        <div class="col-md-4">
             <label>Details</label>
@@ -337,7 +355,7 @@
                                              {% endif %}
         </div>
 
-       <br><br><br><br><br>
+       <br><br><br><br>
      <div class="margini5">
        <button class="btn btn-primary">Submit</button>
      </div>
