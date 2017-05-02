@@ -78,6 +78,9 @@
           <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
               <ul class="nav navbar-nav navbar-right">
                   <li>
+                      <a href="/create-request">Create a request</a>
+                  </li>
+                  <li>
                       <a href="/create-post">+</a>
                   </li>
                   <li>
@@ -102,7 +105,7 @@
             <div class="col-lg-9">
 
                 <form method="GET" action="">
-                    <h2>Search for a perfect location</h2>
+                    <h2>Search for a nearby event:</h2>
                     <div id="custom-search-input">
                         <div class="input-group col-lg-12">
                             <input type="text" name="q" placeholder="Search posts" value='{{ request.GET.q }}'/>
@@ -120,12 +123,33 @@
                     <div class="col-sm-3 col-lg-3 col-md-3">
                         <div class="thumbnail">
                             <a href="/post/{{post.slug}}"><img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
-                            <div class="caption">
+                            <div class="caption" style="overflow-wrap: break-word">
                                 <h4 class="pull-right">${{post.price}}</h4>
                                 <h4><a href="/post/{{post.slug}}">{{ post.name }}</a></h4>
-                                <h4>Addres:{{post.adress}}</h4>
-                                <h4>Date:{{post.date}}<h4>
+                                <h4><strong>Addres:</strong>{{post.adress}}</h4>
+                                <h4><strong>Date:</strong>{{post.date}}<h4>
                                     <h4> --> {{post.finaldate}}<h4>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <h2>Someone posted a request,make him an offer:</h2>
+                <div class="row">
+                    {% for request in requests %}
+                    <div class="col-sm-3 col-lg-3 col-md-3">
+                        <div class="thumbnail">
+                            <div class="caption" style="overflow-wrap: break-word">
+                                <h4><strong>Details:</strong>{{request.details}}</h4>
+                                <h4><strong>Budget:</strong> ${{request.price}}</h4>
+                                <h4><strong>City:</strong>{{request.city}}</h4>
+                                <h4><strong>Phone:</strong>{{request.phonenumber}}<h4>
+                                <h4><strong>Date:</strong>{{request.date}}<h4>
+                                    <h4> --> {{request.finaldate}}<h4>
+                                        {% if request.autor == user %}
+                                <a href='{{request.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
+                                    {% endif %}
                             </div>
                         </div>
                     </div>
