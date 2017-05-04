@@ -10,4 +10,6 @@ urlpatterns = [
     url(r'^delete-comment/(?P<id>[\w-]+)/$' ,delete_comment, name='delete-comment'),
     url(r'^like-comment/(?P<id>[\w-]+)/$' ,CommentLike.as_view(), name='comm-toggle'),
     url(r'^edit/(?P<slug>[-\w]+)/', views.edit, name='edit'),
+    url(r'^post/(?P<slug>[\w-]+)/create-reserve$', views.create_reserve, name='create-reserve'),
+    url(r'^delete-reserve/(?P<id>[\w-]+)/$', views.delete, name='delete'),
 ]

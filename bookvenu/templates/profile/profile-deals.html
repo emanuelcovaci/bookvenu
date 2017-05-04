@@ -182,10 +182,36 @@ h2 a {
 			<td><a href="/edit/{{post.slug}}/">{{ post.name }}</a></td>
 			<td>{{ post.date }}</td>
 			<td>{{ post.adress }}</td>
-			<td>21</td>
+			<td>{{ post.people_going }}</td>
 
 		</tr>
     {% endfor %}
+	</tbody>
+</table>
+
+
+<h1>Events that you are going</h1>
+
+<table class="container2">
+	<thead >
+		<tr>
+			<th><h1>Events</h1></th>
+			<th><h1>Date</h1></th>
+			<th><h1>Addres</h1></th>
+			<th><h1>Persons</h1></th>
+		</tr>
+	</thead>
+	<tbody style="color:#a7aebc" !important>
+    {% for q in qs %}
+<tr>
+
+  <td><a href="{{ q.post.get_absolute_url }}">{{ q.post.name }}</a></td>
+  <td>{{ q.post.date }}</td>
+  <td>{{ q.post.adress }}</td>
+  <td>{{ q.nrlocuri }}</td>
+
+</tr>
+{% endfor %}
 	</tbody>
 </table>
 
@@ -212,6 +238,7 @@ h2 a {
                         <h3> Contac us </h3>
                         <p>You can contact us writing us an mail at adress:
                             mihai.temian@gmail.com</p>
+                        <li><a href="/contact">Contact us</a></li>
                     </div>
 
                     <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">

@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'post',
     'category',
     'requests',
+    'contact',
     'rest_framework',
     'django_extensions'
 ]

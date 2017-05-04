@@ -142,9 +142,24 @@
 
     <font size="3"><p>Site:{{events.site}}</p></font>
       <br>
-    <div class="ceva2">
-      <button type="button" class="btn btn-primary">Reserve</button>
-    </div>
+      <form action="{{ events.get_reserve_url }}" method="post">
+          {% csrf_token %}
+          {% if errors %}
+                 {% for error in errors %}
+               <div class="alert alert-danger alert-dismissible" role="alert">
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                 <strong>Warning!</strong> {{ error }}
+               </div>
+               {% endfor %}
+                 {% endif %}
+
+          <input class="form-control" name="nrlocuri" type="text" placeholder="Number of people" />
+          <div class="ceva2">
+
+<button type="submit" class="btn btn-primary">Reserve</button>
+              </div>
+      </form>
+
           {% if events.author == user %}
     <a href='{{events.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
     {% endif %}
@@ -332,6 +347,7 @@
                         <h3> Contac us </h3>
                         <p>You can contact us writing us an mail at adress:
                             mihai.temian@gmail.com</p>
+                        <li><a href="/contact">Contact us</a></li>
                     </div>
 
                     <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">

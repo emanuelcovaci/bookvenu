@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from forms import Edit_profile, Edit_profile2
 from django.contrib.auth.decorators import login_required
-from post.models import EventModel
+from post.models import EventModel,Reserve
 
 # Create your views here.
 @login_required
@@ -23,6 +23,12 @@ def profile_detail(request):
 def history(request):
     current_user = request.user
     event = EventModel.objects.filter(author=current_user)
+    qs = Reserve.objects.filter(user=current_user)
     return render(request, 'profile/profile-deals.html',{
         'events': event,
+        'user': current_user,
+        'qs': qs
     })
+
+
+

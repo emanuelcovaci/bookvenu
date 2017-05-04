@@ -47,6 +47,16 @@ class EventModel(models.Model):
     def get_delete_url(self):
         return reverse("post:delete-post", kwargs={"slug": self.slug})
 
+    def get_reserve_url(self):
+        return reverse("post:create-reserve", kwargs={"slug": self.slug})
+
+    def people_going(self):
+        qs = Reserve.objects.filter(post=self)
+        total = 0
+        for q in qs:
+            total = total + int(q.nrlocuri)
+        return total
+
 
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.name)
@@ -101,3 +111,12 @@ class Comment(models.Model):
 
     def get_delete_comm(self):
         return reverse("post:delete-comment", kwargs={'id': self.id})
+
+
+class Reserve(models.Model):
+    user = models.ForeignKey(to=User, null=True, blank=True)
+    post = models.ForeignKey(EventModel, null=True, blank=True)
+    nrlocuri = models.CharField(max_length=15)
+
+    def get_delete_url(self):
+        return reverse("reserve:delete", kwargs={'id':self.id})

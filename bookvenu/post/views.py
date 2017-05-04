@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, render_to_response,get_object_or_404
 from django.contrib.auth.decorators import login_required
-from forms import CreateEventForm,CommentForm,Edit_Post
+from forms import CreateEventForm,CommentForm,Edit_Post,ReserveForm
 from .models import EventModel,Comment
 from django.views.decorators.http import require_POST
 from django.http import HttpResponse
@@ -22,7 +22,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import authentication, permissions
 
-from .models import EventModel,Comment
+from .models import EventModel,Comment,Reserve
 from django.contrib.auth.models import User
 
 # Create your views here.
@@ -130,3 +130,36 @@ def edit(request,slug):
         'form': form,
         'post':post,
     })
+
+
+def create_reserve(request,slug=None):
+    post = get_object_or_404(EventModel,slug=slug)
+    comm_parent = Comment.objects.filter(is_parent=True).filter(post=post)
+    errors = []
+    user = request.user
+    form = ReserveForm( request.POST or None)
+    if request.method == "POST":
+        if form.is_valid():
+            p_tickets = int(post.nrlocuri)
+            r_tickets = int(form.cleaned_data['nrlocuri'])
+            if r_tickets <= p_tickets:
+                reserve = form.instance
+                reserve.user = user
+                reserve.post = post
+                form.save()
+                EventModel.objects.filter(slug=slug).update(nrlocuri=str(p_tickets-r_tickets))
+                return redirect('/')
+            else:
+                errors.append("1")
+        else:
+            errors.append("2")
+    return render(request, "posts/Offer-page.html", {'form':form, 'events':post, 'comm_parent':comm_parent,'user':request.user})
+
+
+def delete(request,id=None):
+    reserve = get_object_or_404(Reserve,id=id)
+    post = reserve.post
+    slug = post.slug
+    EventModel.objects.filter(slug=post.slug).update(nrlocuri = str(int(post.nrlocuri)+int(reserve.nrlocuri)))
+    reserve.delete()
+    return redirect("post:post-get" , slug=slug)

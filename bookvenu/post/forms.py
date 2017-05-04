@@ -1,6 +1,6 @@
 from django import forms
 from datetime import date
-from .models import EventModel,Comment
+from .models import EventModel,Comment,Reserve
 from category.models import Category
 from django.shortcuts import get_object_or_404
 
@@ -148,3 +148,18 @@ class Edit_Post(forms.ModelForm):
     def clean_details(self):
         details = self.cleaned_data['details']
         return details
+
+
+
+class ReserveForm(forms.ModelForm):
+    class Meta:
+        model = Reserve
+        fields = ['nrlocuri']
+
+    def clean_nrlocuri(self):
+        nrlocuri = self.cleaned_data['nrlocuri']
+        if nrlocuri.isdigit() == False:
+            raise forms.ValidationError("Invalid input")
+        if int(nrlocuri) < 1 or int(nrlocuri)> 20:
+            raise forms.ValidationError("Not enough/Too many tickets")
+        return nrlocuri
