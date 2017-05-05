@@ -1,6 +1,4 @@
 <!DOCTYPE html>
-<div lang="en">
-
 <head>
     {% load staticfiles %}
     {% load material_form %}
@@ -11,9 +9,9 @@
     <meta name="author" content="">
 
     <title>BookVenue</title>
-  <link rel="stylesheet" href="{% static "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %}">
+    <link rel="stylesheet" href="{% static "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" %}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
 
@@ -26,7 +24,7 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
+    <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
         <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
     <![endif]-->    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -72,263 +70,310 @@
                                 }
                               }
                         </style>
-        <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/style-material.css" %}" rel="stylesheet">
 
 </head>
 
 
-
-
- <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
+<body>
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+    <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
-          <a href="/">
+            <a href="/">
           <span class="bv-title mdl-layout-title">
             <img class="bv-logo-image" src='{% static "css/10.png" %}'>
           </span>
             </a>
 
-          <!-- Add spacer, to align navigation to the right in desktop -->
-          <div class="bv-header-spacer mdl-layout-spacer"></div>
-          <div class="bv-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
-            <div class="mdl-textfield__expandable-holder">
-              <input class="mdl-textfield__input" type="text" id="search-field">
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="bv-header-spacer mdl-layout-spacer"></div>
+            <div class="bv-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+                <div class="mdl-textfield__expandable-holder">
+                    <input class="mdl-textfield__input" type="text" id="search-field">
+                </div>
             </div>
-          </div>
-          <!-- Navigation -->
-          <div class="bv-navigation-container">
-            <nav class="bv-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-request"><i class="material-icons">build</i> Create Request</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-post"><i class="material-icons">event</i> Add Event</a>
-                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/profile"><i class="material-icons">face</i> Profile</a>
-                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout"><i class="material-icons">lock</i> Logout</a>
-                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
-            </nav>
-          </div>
+            <!-- Navigation -->
+            <div class="bv-navigation-container">
+                <nav class="bv-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-request"><i class="material-icons">build</i> Create Request</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-post"><i class="material-icons">event</i> Add Event</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/profile"><i class="material-icons">face</i> Profile</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout"><i class="material-icons">lock</i> Logout</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
+                </nav>
+            </div>
 
         </div>
-      </div>
-
-</div>
-
-<div class="col-lg-3">
-<div class="ceva21">
-
-    <font size="3"><p>Name:{{ events.name }}</p></font>
-
-    <br>
 
 
-    <font size="3"><p>Adress:{{events.adress}}</p></font>
-
-
-    <br>
-    <font size="3"><p>Category:{{events.category}}</p></font>
-    <br>
-
-
-    <font size="3"><p>People:{{events.nrlocuri }}</p></font>
-
-    <br>
-
-
-    <font size="3"><p>Date:{{ events.date }}</p></font>
-
-    <br>
-
-    <font size="3"><p>Final Date:{{ events.finaldate }}</p></font>
-
-    <br>
-
-    <font size="3"><p>Phone number:{{events.phonenumber}}</p></font>
-
-    <br>
-
-
-    <font size="3"><p>Price:{{ events.price }}</p></font>
-
-    <br>
-    <font size="3"><p>Author:{{events.author}}</p></font>
-    <br>
-
-    <font size="3"><p>Site:{{events.site}}</p></font>
-      <br>
-      <form action="{{ events.get_reserve_url }}" method="post">
-          {% csrf_token %}
-          {% if errors %}
-                 {% for error in errors %}
-               <div class="alert alert-danger alert-dismissible" role="alert">
-                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                 <strong>Warning!</strong> {{ error }}
-               </div>
-               {% endfor %}
-                 {% endif %}
-
-          <input class="form-control" name="nrlocuri" type="text" placeholder="Number of people" />
-          <div class="ceva2">
-
-<button type="submit" class="btn btn-primary">Reserve</button>
-              </div>
-      </form>
-
-          {% if events.author == user %}
-    <a href='{{events.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
-    {% endif %}
-        <a class='like-btn btn btn-xs btn-primary' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ events.total_likes }} Like</a>
-
-</div>
-</div>
-
-<div class="col-lg-9">
-
-  <div class="slider">
-    <div class="ceva1">
-              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-  <ol class="carousel-indicators">
-    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#myCarousel" data-slide-to="1"></li>
-    <li data-target="#myCarousel" data-slide-to="2"></li>
-      <li data-target="#myCarousel" data-slide-to="3"></li>
-  </ol>
-
-  <!-- Wrapper for slides -->
-  <div class="carousel-inner">
-    <div class="item active">
-      <img src='{{  events.image1.url }}' class = 'img-responsive' alt="Los Angeles">
+        <div class="bv-drawer mdl-layout__drawer">
+            <span class="mdl-layout-title">
+              <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+            </span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/create-request"><i class="material-icons">build</i> Create Request</a>
+                <a class="mdl-navigation__link" href="/create-post"><i class="material-icons">event</i> Add Event</a>
+                <a class="mdl-navigation__link" href="/profile"><i class="material-icons">face</i> Profile</a>
+                <a class="mdl-navigation__link" href="/logout"><i class="material-icons">lock</i> Logout</a>
+                <a class="mdl-navigation__link" href="/"><i class="material-icons">home</i> Home</a>
+            </nav>
+        </div>
     </div>
+    <div class="bv-content mdl-layout__content">
+        <div class="col-lg-3">
+            <div class="ceva21">
 
-    <div class="item">
-      <img src='{{  events.image2.url }}'  class = 'img-responsive' alt="Chicago">
-    </div>
+                <font size="3"><p>Name:{{ events.name }}</p></font>
 
-    <div class="item">
-      <img src='{{  events.image3.url }}'  class = 'img-responsive' alt="New York">
-    </div>
-
-      <div class="item">
-      <img src='{{  events.image4.url }}'  class = 'img-responsive' alt="New York">
-    </div>
-  </div>
-
-  <!-- Left and right controls -->
-  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-    <span class="glyphicon glyphicon-chevron-left"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="right carousel-control" href="#myCarousel" data-slide="next">
-    <span class="glyphicon glyphicon-chevron-right"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
-    </div>
-
-      <div class="ceva3">
-        <img src= '{{  events.image2.url }}'  class = 'img-responsive'/></a>
-    </div>
-
-      <div class="ceva4">
-        <img src= '{{  events.image3.url }}'  class = 'img-responsive'/></a>
-    </div>
-
-    <div class="ceva6">
-        <img src= '{{  events.image4.url }}'  class = 'img-responsive'/></a>
-    </div>
-    <div class="ceva5">
-      <font size="3"><p>{{events.details}}</p></font>
-    </div>
+                <br>
 
 
-  </div>
-
-<br><br><br><br>
+                <font size="3"><p>Adress:{{events.adress}}</p></font>
 
 
+                <br>
+                <font size="3"><p>Category:{{events.category}}</p></font>
+                <br>
 
-        <div class="col-sm-12 margina">
-            <h3>Comments</h3>
-        </div><!-- /col-sm-12 -->
 
-{% for comment in comm_parent %}
-    <div class="row">
-        <div class="col-sm-1">
-            <div class="thumbnail">
-                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-            </div><!-- /thumbnail -->
-        </div><!-- /col-sm-1 -->
+                <font size="3"><p>People:{{events.nrlocuri }}</p></font>
 
-        <div class="col-sm-5">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
-                    {% if comment.user == user %}
-                    <a href='{{comment.get_delete_comm}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete comment</a>
-                      {% endif %}
-                    <a class='like-btn btn btn-xs btn-primary' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ comment.total_likes }} Like</a>
+                <br>
+
+
+                <font size="3"><p>Date:{{ events.date }}</p></font>
+
+                <br>
+
+                <font size="3"><p>Final Date:{{ events.finaldate }}</p></font>
+
+                <br>
+
+                <font size="3"><p>Phone number:{{events.phonenumber}}</p></font>
+
+                <br>
+
+
+                <font size="3"><p>Price:{{ events.price }}</p></font>
+
+                <br>
+                <font size="3"><p>Author:{{events.author}}</p></font>
+                <br>
+
+                <font size="3"><p>Site:{{events.site}}</p></font>
+                <br>
+                <form action="{{ events.get_reserve_url }}" method="post">
+                    {% csrf_token %}
+                    {% if errors %}
+                    {% for error in errors %}
+                    <div class="alert alert-danger alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <strong>Warning!</strong> {{ error }}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                    <input class="form-control" name="nrlocuri" type="text" placeholder="Number of people" />
+                    <div class="ceva2">
+
+                        <button type="submit" class="btn btn-primary">Interested</button>
+                    </div>
+                </form>
+
+                {% if events.author == user %}
+                <a href='{{events.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
+                {% endif %}
+                <a class='like-btn btn btn-xs btn-primary' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ events.total_likes }} Like</a>
+
+            </div>
+        </div>
+        <div class="col-lg-9">
+
+            <div class="slider">
+                <div class="ceva1">
+                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                            <li data-target="#myCarousel" data-slide-to="1"></li>
+                            <li data-target="#myCarousel" data-slide-to="2"></li>
+                            <li data-target="#myCarousel" data-slide-to="3"></li>
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <img src='{{  events.image1.url }}' class = 'img-responsive' alt="Los Angeles">
+                            </div>
+
+                            <div class="item">
+                                <img src='{{  events.image2.url }}'  class = 'img-responsive' alt="Chicago">
+                            </div>
+
+                            <div class="item">
+                                <img src='{{  events.image3.url }}'  class = 'img-responsive' alt="New York">
+                            </div>
+
+                            <div class="item">
+                                <img src='{{  events.image4.url }}'  class = 'img-responsive' alt="New York">
+                            </div>
+                        </div>
+
+                        <!-- Left and right controls -->
+                        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
                 </div>
 
-                <div class="panel-body">
-                    {{ comment.body }}
-                </div><!-- /panel-body -->
+                <div class="ceva3">
+                    <img src= '{{  events.image2.url }}'  class = 'img-responsive'/></a>
+                </div>
 
-            </div><!-- /panel panel-default -->
+                <div class="ceva4">
+                    <img src= '{{  events.image3.url }}'  class = 'img-responsive'/></a>
+                </div>
+
+                <div class="ceva6">
+                    <img src= '{{  events.image4.url }}'  class = 'img-responsive'/></a>
+                </div>
+                <div class="ceva5">
+                    <font size="3"><p>{{events.details}}</p></font>
+                </div>
+
+
+            </div>
+
+            <br><br><br><br>
+
+
+
+            <div class="col-sm-12 margina">
+                <h3>Comments</h3>
+            </div><!-- /col-sm-12 -->
+
+            {% for comment in comm_parent %}
             <div class="row">
-                {% for reply in comment.children %}
-                <div class="col-sm-2">
+                <div class="col-sm-1">
                     <div class="thumbnail">
                         <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
                     </div><!-- /thumbnail -->
                 </div><!-- /col-sm-1 -->
 
-                <div class="col-sm-10">
-                    <div class="panel panel-comment panel-default">
-                        <div class="panel-heading-comment panel-heading">
-                             <strong>{{ reply.user }}</strong> <span class="text-muted">{{ reply.date_created}}</span>
-                              {% if reply.user == user %}
-                            <a href='{{ reply.get_delete_comm }}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete reply</a>
-                              {% endif %}
+                <div class="col-sm-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
+                            {% if comment.user == user %}
+                            <a href='{{comment.get_delete_comm}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete comment</a>
+                            {% endif %}
+                            <a class='like-btn btn btn-xs btn-primary' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ comment.total_likes }} Like</a>
                         </div>
+
                         <div class="panel-body">
-                        {{ reply.body }}
+                            {{ comment.body }}
                         </div><!-- /panel-body -->
+
                     </div><!-- /panel panel-default -->
-                </div><!-- /col-sm-5 -->
-                {% endfor %}
-            </div><!-- /row -->
-                        <form action="." method='post'>
-                                    {% csrf_token %}
-                                      <strong>Reply</strong>
-                                                <input type='hidden' name='parent_id' value={{comment.id}}>
-                                                <input class="form-control" name="body" value="{{form.body}}" type="text" placeholder="Your reply" />
+                    <div class="row">
+                        {% for reply in comment.children %}
+                        <div class="col-sm-2">
+                            <div class="thumbnail">
+                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+                            </div><!-- /thumbnail -->
+                        </div><!-- /col-sm-1 -->
 
-
-                                                    <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
-
-
-                                </form>
-        </div><!-- /col-sm-5 -->
-    </div><!-- /row -->
-        <br>
-{% endfor %}
-
-              </form>
-        <div class="row">
-            <form action="." method='post'>
-                {% csrf_token %}
-                        <div class="col-lg-9">
-                            <label class="col-sm-2 control-label">Comment </label><br/><br/>
-                            <div class="col-sm-6">
-                              <textarea class="form-control" name="body"  rows="5" value="{{form.body}}"></textarea>
-                                <div class="form-group">
-                                <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
+                        <div class="col-sm-10">
+                            <div class="panel panel-comment panel-default">
+                                <div class="panel-heading-comment panel-heading">
+                                    <strong>{{ reply.user }}</strong> <span class="text-muted">{{ reply.date_created}}</span>
+                                    {% if reply.user == user %}
+                                    <a href='{{ reply.get_delete_comm }}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete reply</a>
+                                    {% endif %}
                                 </div>
+                                <div class="panel-body">
+                                    {{ reply.body }}
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+                        {% endfor %}
+                    </div><!-- /row -->
+                    <form action="." method='post'>
+                        {% csrf_token %}
+                        <strong>Reply</strong>
+                        <input type='hidden' name='parent_id' value={{comment.id}}>
+                        <input class="form-control" name="body" value="{{form.body}}" type="text" placeholder="Your reply" />
+
+
+                        <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
+
+
+                    </form>
+                </div><!-- /col-sm-5 -->
+            </div><!-- /row -->
+            <br>
+            {% endfor %}
+
+            </form>
+            <div class="row">
+                <form action="." method='post'>
+                    {% csrf_token %}
+                    <div class="col-lg-9">
+                        <label class="col-sm-2 control-label">Comment </label><br/><br/>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" name="body"  rows="5" value="{{form.body}}"></textarea>
+                            <div class="form-group">
+                                <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
                             </div>
                         </div>
-            </form>
-              <br>
-        </div>
+                    </div>
+                </form>
+                <br>
+            </div>
 
+        </div>
+        <div class="col-md-12">
+
+            <footer class="bv-footer mdl-mega-footer">
+                <div class="mdl-mega-footer--top-section">
+                    <div class="mdl-mega-footer--left-section">
+                        <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
+                        &nbsp;
+                        <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
+                        &nbsp;
+                        <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
+                    </div>
+                    <div class="mdl-mega-footer--right-section">
+                        <a class="mdl-typography--font-light" href="#top">
+                            Back to Top
+                            <i class="material-icons">expand_less</i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="mdl-mega-footer--middle-section">
+                    <p class="mdl-typography--font-light">Copyright © 2018 </p>
+                    <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
+                        mihai.temian@gmail.com</p>
+                </div>
+
+                <div class="mdl-mega-footer--bottom-section">
+                    <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
+                    <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+                </div>
+
+            </footer>
+
+        </div>
     </div>
+
+</div>
 
 
 <script>
@@ -371,40 +416,7 @@
   })
     </script>
 
-</form>
-    <div class="col-md-12">
 
-                <footer class="bv-footer mdl-mega-footer">
-          <div class="mdl-mega-footer--top-section">
-            <div class="mdl-mega-footer--left-section">
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
-              &nbsp;
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
-              &nbsp;
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
-            </div>
-            <div class="mdl-mega-footer--right-section">
-              <a class="mdl-typography--font-light" href="#top">
-                Back to Top
-                <i class="material-icons">expand_less</i>
-              </a>
-            </div>
-          </div>
-
-          <div class="mdl-mega-footer--middle-section">
-            <p class="mdl-typography--font-light">Copyright © 2018 </p>
-            <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
-                            mihai.temian@gmail.com</p>
-          </div>
-
-          <div class="mdl-mega-footer--bottom-section">
-            <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
-            <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
-          </div>
-
-        </footer>
-
-    </div>
 </body>
 
 </html>

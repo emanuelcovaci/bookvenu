@@ -14,10 +14,10 @@
 
     <!-- Bootstrap Core CSS -->
     <!-- <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">-->
-<!--
-    {% include 'material/includes/material_css.html' %}
-    <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
-    {% include 'material/includes/material_js.html' %}-->
+    <!--
+        {% include 'material/includes/material_css.html' %}
+        <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
+        {% include 'material/includes/material_js.html' %}-->
     <!-- Custom CSS -->
     <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
 
@@ -30,7 +30,7 @@
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
+    <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
         <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
     <![endif]-->
     <link href="{% static "css/style.css" %}" rel="stylesheet">
@@ -50,151 +50,163 @@
 </head>
 
 <body link="#FFF8DC" vlink="#FFF8DC">
+<div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
           <span class="bv-title mdl-layout-title">
             <img class="bv-logo-image" src='{% static "css/10.png" %}'>
           </span>
 
-          <!-- Add spacer, to align navigation to the right in desktop -->
-          <div class="bv-header-spacer mdl-layout-spacer"></div>
+            <!-- Add spacer, to align navigation to the right in desktop -->
+            <div class="bv-header-spacer mdl-layout-spacer"></div>
 
-          <!-- Navigation -->
-          <div class="bv-navigation-container">
-            <nav class="bv-navigation mdl-navigation">
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/register">Sign Up</a>
-              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
-            </nav>
-          </div>
+            <!-- Navigation -->
+            <div class="bv-navigation-container">
+                <nav class="bv-navigation mdl-navigation">
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/register">Sign Up</a>
+                    <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+                </nav>
+            </div>
           <span class="bv-mobile-title mdl-layout-title">
             <img class="bv-logo-image" src='{% static "css/10.png" %}'>
           </span>
         </div>
-      </div>
-     <div class="bv-content mdl-layout__content">
-        <a name="top"></a>
-        <div class="bv-map mdl-typography--text-center">
-            <div id="map"></div>
-              <a href="#how">
+    </div>
+    <div class="bv-drawer mdl-layout__drawer">
+        <span class="mdl-layout-title">
+          <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+        </span>
+        <nav class="mdl-navigation">
+            <a class="mdl-navigation__link" href="/register">Sign Up</a>
+            <a class="mdl-navigation__link" href="/login">Login</a>
+        </nav>
+    </div>
+</div>
+<div class="bv-content mdl-layout__content">
+    <a name="top"></a>
+    <div class="bv-map mdl-typography--text-center">
+        <div id="map"></div>
+        <a href="#how">
             <button class="bv-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
-              <i class="material-icons">expand_more</i>
+                <i class="material-icons">expand_more</i>
             </button>
-          </a>
-        </div>
+        </a>
     </div>
+</div>
 
-    <div class="bv-more-section mdl-typography--text-center">
-          <a name="how"></a>
-          <div class="mdl-typography--display-1-color-contrast">How does this site work?</div>
-          <div class="bv-card-container mdl-grid">
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
+<div class="bv-more-section mdl-typography--text-center">
+    <a name="how"></a>
+    <div class="mdl-typography--display-1-color-contrast">How does this site work?</div>
+    <div class="bv-card-container mdl-grid">
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card__media">
                 <img src='{% static "owner.jpg" %}'>
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">Owners will post the offer</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
-                    </span>
-              </div>
-                </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src='{% static "hotel_owner.jpg" %}' height="187px">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">You will find perfect location</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
-                    </span>
-              </div>
-                </div>
-            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
-              <div class="mdl-card__media">
-                <img src='{% static "events.jpg" %}' height="187px">
-              </div>
-              <div class="mdl-card__title">
-                 <h4 class="mdl-card__title-text">You will enjoy the event</h4>
-              </div>
-              <div class="mdl-card__supporting-text">
-                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
-                    </span>
-              </div>
             </div>
-                </div>
-    </div>
-    
-<div class="bv-wear-section">
-          <div class="bv-wear-band">
-            <div class="bv-wear-band-text">
-              <div class="mdl-typography--display-2 mdl-typography--font-thin">Bookvenue is a service</div>
-              <p class="mdl-typography--headline mdl-typography--font-thin">
-                that has the purpose to help people with time.
-              </p>
-              <p>
-                <a class="mdl-typography--font-regular mdl-typography--text-uppercase bv-alt-link" href="">
-                  We are helping the managers to have better selling and peoples to don't waste time.
-                </a>
-              </p>
+            <div class="mdl-card__title">
+                <h4 class="mdl-card__title-text">Organizers will post an announcement</h4>
             </div>
-          </div>
+            <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Organizers will post an announcement with their event anywhere in world.This way they can make their event more popular.
+                    </span>
+            </div>
         </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card__media">
+                <img src='{% static "hotel_owner.jpg" %}' height="187px">
+            </div>
+            <div class="mdl-card__title">
+                <h4 class="mdl-card__title-text">You will find an event near your location</h4>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">If you are trying to find an event,our site will help you for sure.Organizers posted already announcements with events,you need only to find an event near your location.
+                    </span>
+            </div>
+        </div>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+            <div class="mdl-card__media">
+                <img src='{% static "events.jpg" %}' height="187px">
+            </div>
+            <div class="mdl-card__title">
+                <h4 class="mdl-card__title-text">You will enjoy the event,for sure</h4>
+            </div>
+            <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Now,everything is done.The event is coming and the last thing you have to do is to enjoy your event!!!
+                    </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bv-wear-section">
+    <div class="bv-wear-band">
+        <div class="bv-wear-band-text">
+            <div class="mdl-typography--display-2 mdl-typography--font-thin">Bookvenue is a service</div>
+            <p class="mdl-typography--headline mdl-typography--font-thin">
+                that has the purpose to help people with time.
+            </p>
+            <p>
+                <a class="mdl-typography--font-regular mdl-typography--text-uppercase bv-alt-link" href="">
+                    We are helping the managers to have better selling and peoples to don't waste time.
+                </a>
+            </p>
+        </div>
+    </div>
+</div>
 
 <div class="bv-customized-section">
-          <div class="bv-customized-section-text">
-            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">What are you waiting for?</div>
-            <p class="mdl-typography--font-light">
-              Don't waste anymore time finding your perfect hotel for holyday,best restaurant or even a place for a businesse meeting.We are here for you.Just sign up and start searching or,if you are an owner,post your annoucement. </p>
-                
-              <br>
-              <a href="/register" class="bv-link mdl-typography--font-light">Sign up!</a>
-            </p>
-          </div>
+    <div class="bv-customized-section-text">
+        <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">What are you waiting for?</div>
+        <p class="mdl-typography--font-light">
+            We are here to help you with your event.Post an announcement and people can hear about your event more easily.Don't wate any more time and let us help you!
+        <br>
+        <a href="/register" class="bv-link mdl-typography--font-light">Sign up!</a>
+        </p>
+    </div>
+</div>
+
+<footer class="bv-footer mdl-mega-footer">
+    <div class="mdl-mega-footer--top-section">
+        <div class="mdl-mega-footer--left-section">
+            <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
+            &nbsp;
+            <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
+            &nbsp;
+            <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
         </div>
-    <footer class="bv-footer mdl-mega-footer">
-          <div class="mdl-mega-footer--top-section">
-            <div class="mdl-mega-footer--left-section">
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
-              &nbsp;
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
-              &nbsp;
-              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
-            </div>
-            <div class="mdl-mega-footer--right-section">
-              <a class="mdl-typography--font-light" href="#top">
+        <div class="mdl-mega-footer--right-section">
+            <a class="mdl-typography--font-light" href="#top">
                 Back to Top
                 <i class="material-icons">expand_less</i>
-              </a>
-            </div>
-          </div>
+            </a>
+        </div>
+    </div>
 
-          <div class="mdl-mega-footer--middle-section">
-            <p class="mdl-typography--font-light">Copyright © 2018 </p>
-            <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
-                            mihai.temian@gmail.com</p>
-          </div>
+    <div class="mdl-mega-footer--middle-section">
+        <p class="mdl-typography--font-light">Copyright © 2018 </p>
+        <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
+            mihai.temian@gmail.com</p>
+    </div>
 
-          <div class="mdl-mega-footer--bottom-section">
-            <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
-            <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
-          </div>
+    <div class="mdl-mega-footer--bottom-section">
+        <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
+        <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+    </div>
 
-        </footer>
-    <!-- jQuery -->
-    <script src="{% static "js/jquery.js" %}"></script>
+</footer>
+</div>
+<!-- jQuery -->
+<script src="{% static "js/jquery.js" %}"></script>
 
     <!-- Bootstrap Core JavaScript -->
     <script src="{% static "js/bootstrap.min.js" %}"></script>
 
-    <!-- Script to Activate the Carousel -->
-    <script>
+<!-- Script to Activate the Carousel -->
+<script>
     $('.carousel').carousel({
         interval: 5000 //changes the speed
     })
     </script>
- <script>
+<script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
@@ -256,9 +268,9 @@
       }
 
     </script>
-    <script async defer
+<script async defer
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChLzJbKOprhuP0Vs_V-h3XCsTT6GTaGgs&callback=initMap">
-    </script>
+</script>
 
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>

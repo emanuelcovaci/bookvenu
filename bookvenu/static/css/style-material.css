@@ -14,6 +14,10 @@
  * limitations under the License.
  */
 
+a:hover {
+text-decoration: none;
+}
+
 body {
   margin: 0;
 }
@@ -47,9 +51,19 @@ a img{
   width: auto;
 }
 
+.bv-card-wide > .mdl-card__title {
+  color: #fff;
+  height: 175px;
+}
+.bv-card-wide > .mdl-card__menu {
+  color: #fff;
+}
+
 .bv-content {
    width: 100%;
-   padding-bottom: 30px;
+   overflow-x: visible;
+   overflow-y: visible;
+   height: 600px;
 }
 .bv-fab {
   position: absolute;
@@ -126,6 +140,7 @@ a img{
   }
 
     .bv-navigation .mdl-navigation__link:hover {
+      text-decoration: none;
       border-bottom: 4px solid #8bc34a;
     }
 
@@ -165,7 +180,7 @@ a img{
 
   .bv-drawer .mdl-layout-title {
     position: relative;
-    background: #6ab344;
+    background: #ececec;
     height: 160px;
   }
 

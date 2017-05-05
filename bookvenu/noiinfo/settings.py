@@ -27,7 +27,7 @@ RECAPTCHA_PRIVATE_KEY = '6LcOHRYUAAAAAFTBN0c6E0lGx8ScDTPoy9cVSKjI'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition

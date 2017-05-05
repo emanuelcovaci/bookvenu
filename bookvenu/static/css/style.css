@@ -334,6 +334,7 @@ body {
 
 #custom-search-input{
     padding: 3px;
+    margin-bottom: 10px;
     border: solid 1px #E4E4E4;
     border-radius: 6px;
     background-color: #fff;
@@ -342,6 +343,8 @@ body {
 #custom-search-input input{
     border: 0;
     box-shadow: none;
+    height: 100%;
+    width: 100%;
 }
 
 #custom-search-input button{
