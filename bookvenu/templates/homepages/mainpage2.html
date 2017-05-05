@@ -83,9 +83,8 @@
 <body link="#FFF8DC" vlink="#FFF8DC">
     <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
-          <span class="bv-title mdl-layout-title">
-            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
-          </span>
+          <a class="bv-title mdl-layout-title"></a>
+            <a href="/"></a><img class="bv-logo-image" src='{% static "css/10.png" %}'></a>
 
           <!-- Add spacer, to align navigation to the right in desktop -->
           <div class="bv-header-spacer mdl-layout-spacer"></div>
@@ -104,9 +103,11 @@
                 <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
             </nav>
           </div>
-          <span class="bv-mobile-title mdl-layout-title">
-            <a href="/"><img class="bv-logo-image" src='{% static "css/10.png" %}'></a>
+            <a href="/">
+          <span class="bv-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
           </span>
+            </a>
         </div>
       </div>
      <div class="bv-content mdl-layout__content">
@@ -166,7 +167,7 @@
                                 <h6><strong>Date:</strong>{{request.date}}<h5>
                                     <h6> --> {{request.finaldate}}<h5>
                                         {% if request.autor == user %}
-                                <a href='{{request.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
+                                <a href='{{request.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete request</a>
                                     {% endif %}
                             </div>
                         </div>

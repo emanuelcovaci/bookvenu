@@ -117,7 +117,6 @@ class AccRegisterForm(forms.ModelForm):
             raise forms.ValidationError("Country name contains invalid characters")
         return country
 
-
 class ChangePass(forms.Form):
     oldpassword = forms.CharField(max_length=20, min_length=8,
                                  label="Old password",

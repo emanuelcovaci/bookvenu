@@ -45,7 +45,7 @@ class CreateEventForm(forms.ModelForm):
         return adress
 
     def clean_data(self):
-        data = self.cleaned_data['data']
+        data = self.cleaned_data['date']
         if data < date.today():
             raise forms.ValidationError("Date is not valid")
         else:

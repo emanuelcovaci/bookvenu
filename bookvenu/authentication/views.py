@@ -36,6 +36,7 @@ def logout_view(request):
 def register_page(request):
     form = UserRegisterForm(data=request.POST or None)
     acc_form = AccRegisterForm(data=request.POST or None)
+    errors = []
     if request.method == 'POST':
         if form.is_valid() == True and acc_form.is_valid() == True:
             form.instance.set_password(form.cleaned_data['password'])
@@ -49,6 +50,7 @@ def register_page(request):
     return render(request, "authentication/register.html", {
         'form': form,
         'acc_form' : acc_form,
+        'errors': errors
     })
 
 @login_required
