@@ -138,8 +138,7 @@
 
                 <div class="row">
                     {% for post in events %}
-                    {% for post in events %}
-                    {% for post in events %}
+
                     <div class="col-sm-3 col-lg-3 col-md-3">
                         <div class="thumbnail">
                             <a href="/post/{{post.slug}}"><img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
@@ -152,8 +151,6 @@
                             </div>
                         </div>
                     </div>
-                    {% endfor %}
-                    {% endfor %}
                     {% endfor %}
                 </div>
                 <h2>Someone posted a request,make him an offer:</h2>
@@ -208,6 +205,7 @@
           <div class="mdl-mega-footer--bottom-section">
             <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
             <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+              <a class="bv-link mdl-typography--font-light" href="/contact">Contact us</a>
           </div>
 
         </footer>

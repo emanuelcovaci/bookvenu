@@ -126,16 +126,13 @@
 }
 
 .ceva1{
-  background-image: url("2.jpg");
-  background-repeat: no-repeat;
-  width:60%;
-  height: 50%;
+  width:50%;
+  height: 40%;
   margin-top: 3.5%;
   margin-left:28%
 }
 .ceva3{
-  background-image: url("2.jpg");
-  background-repeat: no-repeat;
+
   width:4%;
   height: 7.3%;
   margin-top: 0.4%;
