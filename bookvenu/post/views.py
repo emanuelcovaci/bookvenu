@@ -42,7 +42,7 @@ def create_post(request):
 
     })
 
-
+@login_required
 def get_post(request, slug):
     event = get_object_or_404(EventModel,slug=slug)
     comm_parent = Comment.objects.filter(is_parent=True).filter(post=event)
@@ -108,17 +108,19 @@ class CommentLike(APIView):
         }
         return Response(data)
 
+@login_required
 def delete_post(request, slug=None):
     EventModel.objects.filter(slug=slug).delete()
     return redirect('/')
 
+@login_required
 def delete_comment(request, id):
     comment = Comment.objects.get(id=id)
     post = comment.post
     comment.delete()
     return redirect('post:post-get', slug=post.slug)
 
-
+@login_required
 def edit(request,slug):
     post = get_object_or_404(EventModel, slug=slug)
     form = Edit_Post(request.POST or None,instance=post, user=request.user)
@@ -131,7 +133,7 @@ def edit(request,slug):
         'post':post,
     })
 
-
+@login_required
 def create_reserve(request,slug=None):
     post = get_object_or_404(EventModel,slug=slug)
     comm_parent = Comment.objects.filter(is_parent=True).filter(post=post)
@@ -155,7 +157,7 @@ def create_reserve(request,slug=None):
             errors.append("2")
     return render(request, "posts/Offer-page.html", {'form':form, 'events':post, 'comm_parent':comm_parent,'user':request.user})
 
-
+@login_required
 def delete(request,id=None):
     reserve = get_object_or_404(Reserve,id=id)
     post = reserve.post

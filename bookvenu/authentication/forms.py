@@ -19,7 +19,7 @@ class LoginForm(forms.Form):
 
 
 class UserRegisterForm(forms.ModelForm):
-    recaptcha = ReCaptchaField()
+
     retypepassword = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Retype password',
         'label': 'Retype password',
@@ -90,7 +90,7 @@ class UserRegisterForm(forms.ModelForm):
 
 
 class AccRegisterForm(forms.ModelForm):
-
+    recaptcha = ReCaptchaField()
     class Meta:
         model = Account
         fields = ['phonenumber','city','country']

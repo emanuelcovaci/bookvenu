@@ -18,6 +18,7 @@ def create_request(request):
         'form': form,
     })
 
+@login_required
 def delete_requests(request, slug=None):
     RequestModel.objects.filter(slug=slug).delete()
     return redirect('/')
