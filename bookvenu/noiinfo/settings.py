@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'user_profile',
+    'material.admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -49,7 +50,10 @@ INSTALLED_APPS = [
     'requests',
     'contact',
     'rest_framework',
-    'django_extensions'
+    'django_extensions',
+    'material',
+    'material.frontend',
+
 ]
 
 MIDDLEWARE_CLASSES = [

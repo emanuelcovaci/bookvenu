@@ -3,7 +3,7 @@
 
 <head>
     {% load staticfiles %}
-
+    {% load material_form %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,12 +13,17 @@
     <title>Bookvenue</title>
 
     <!-- Bootstrap Core CSS -->
-    <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
-
+    <!-- <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">-->
+<!--
+    {% include 'material/includes/material_css.html' %}
+    <script src="{% static 'material/js/jquery-2.2.0.js' %}"></script>
+    {% include 'material/includes/material_js.html' %}-->
     <!-- Custom CSS -->
     <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
     <!-- Custom Fonts -->
     <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
 
@@ -28,165 +33,155 @@
         <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
         <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
     <![endif]-->
+    <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/style-material.css" %}" rel="stylesheet">
 
+    <style>
+    #view-source {
+      position: fixed;
+      display: block;
+      right: 0;
+      bottom: 0;
+      margin-right: 40px;
+      margin-bottom: 40px;
+      z-index: 900;
+    }
+    </style>
 </head>
 
 <body link="#FFF8DC" vlink="#FFF8DC">
+    <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="bv-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+          </span>
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="bv-header-spacer mdl-layout-spacer"></div>
 
-                <a class="navbar-brand" href="/">BookVenue</a>
-            </div>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="/register">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="/login">Log in</a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+          <!-- Navigation -->
+          <div class="bv-navigation-container">
+            <nav class="bv-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/register">Sign Up</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/login">Login</a>
+            </nav>
+          </div>
+          <span class="bv-mobile-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+          </span>
         </div>
-        <!-- /.container -->
-    </nav>
-
-
-
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11132.329361888747!2d21.21898925!3d45.76954005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sro!2sro!4v1470760832770" width=100% height=80% frameborder="0" style="border:0" allowfullscreen></iframe>
-
-
-    <!-- Page Content -->
-    <div class="container">
-
-        <!-- Marketing Icons Section -->
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="page-header">
-                    How does this site work?
-                </h1>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-check"></i> Owners will post the offer</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-gift"></i>You will find perfect location</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4><i class="fa fa-fw fa-compass"></i>You will enjoy the event</h4>
-                    </div>
-                    <div class="panel-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /.row -->
       </div>
-       <!--End Cointainer -->
+     <div class="bv-content mdl-layout__content">
+        <a name="top"></a>
+        <div class="bv-map mdl-typography--text-center">
+            <div id="map"></div>
+              <a href="#how">
+            <button class="bv-fab mdl-button mdl-button--colored mdl-js-button mdl-button--fab mdl-js-ripple-effect">
+              <i class="material-icons">expand_more</i>
+            </button>
+          </a>
+        </div>
+    </div>
 
-        <div class="pozaj">
-          <div class="leftcorner2"></div>
-          <div class="text">
-            <font size="4" color="#F0F8FF"><p align="center">Bookvenue is a website that has the purpose to help people with time.</p></font>
-            <font size="4" color="#F0F8FF"><p align="center">This is the best services for people who have a meeting or have</p></font>
-            <font size="4" color="#F0F8FF"><p align="center">a disponible place for that.We are helping the managers</p></font>
-            <font size="4" color="#F0F8FF"><p align="center">to have better selling and peoples to don't waste time.</p></font>
-            <font size="4" color="#F0F8FF"><p align="center">The mechanism of our service is very simple.</p></font>
+    <div class="bv-more-section mdl-typography--text-center">
+          <a name="how"></a>
+          <div class="mdl-typography--display-1-color-contrast">How does this site work?</div>
+          <div class="bv-card-container mdl-grid">
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src='{% static "owner.jpg" %}'>
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">Owners will post the offer</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                    </span>
+              </div>
+                </div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src='{% static "hotel_owner.jpg" %}' height="187px">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">You will find perfect location</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                    </span>
+              </div>
+                </div>
+            <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-tablet mdl-cell--4-col-phone mdl-card mdl-shadow--3dp">
+              <div class="mdl-card__media">
+                <img src='{% static "events.jpg" %}' height="187px">
+              </div>
+              <div class="mdl-card__title">
+                 <h4 class="mdl-card__title-text">You will enjoy the event</h4>
+              </div>
+              <div class="mdl-card__supporting-text">
+                <span class="mdl-typography--font-light mdl-typography--subhead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur in alias at numquam rerum ea excepturi expedita tenetur assumenda voluptatibus eveniet incidunt dicta nostrum quod?
+                    </span>
+              </div>
+            </div>
+                </div>
+    </div>
+    
+<div class="bv-wear-section">
+          <div class="bv-wear-band">
+            <div class="bv-wear-band-text">
+              <div class="mdl-typography--display-2 mdl-typography--font-thin">Bookvenue is a service</div>
+              <p class="mdl-typography--headline mdl-typography--font-thin">
+                that has the purpose to help people with time.
+              </p>
+              <p>
+                <a class="mdl-typography--font-regular mdl-typography--text-uppercase bv-alt-link" href="">
+                  We are helping the managers to have better selling and peoples to don't waste time.
+                </a>
+              </p>
+            </div>
           </div>
         </div>
 
-
-
-        <div class="col-lg-12">
-            <h2 class="page-header" align="center">What are you waiting for?</h2>
+<div class="bv-customized-section">
+          <div class="bv-customized-section-text">
+            <div class="mdl-typography--font-light mdl-typography--display-1-color-contrast">What are you waiting for?</div>
+            <p class="mdl-typography--font-light">
+              Don't waste anymore time finding your perfect hotel for holyday,best restaurant or even a place for a businesse meeting.We are here for you.Just sign up and start searching or,if you are an owner,post your annoucement. </p>
+                
+              <br>
+              <a href="/register" class="bv-link mdl-typography--font-light">Sign up!</a>
+            </p>
+          </div>
         </div>
-
-        <hr>
-
-        <!-- Call to Action Section -->
-        <div class="well">
-            <div class="row">
-                <div class="col-md-8">
-                    <p>Don't waste anymore time finding your perfect hotel for holyday,best restaurant or even a place for a businesse meeting.We are here for you.Just sign up and start searching or,if you are an owner,post your annoucement. </p>
-                </div>
-                <div class="col-md-4">
-                    <a class="btn btn-lg btn-default btn-block" href="/register">Sign up!</a>
-                </div>
+    <footer class="bv-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+            <div class="mdl-mega-footer--left-section">
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
             </div>
-        </div>
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Back to Top
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
 
-        <hr>
-
-        <!-- Footer -->
-
-    <footer>
-        <div class="footer" id="footer">
-            <div class="container margini">
-                <div class="row">
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> About us </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> General links </h3>
-                        <ul>
-                            <li> <a href="/register"> Sign up </a> </li>
-                            <li> <a href="/logout"> Logout </a> </li>
-                            <li> <a href="/profile"> Profile </a> </li>
-                            <li> <a href="/create-post"> Create Post </a> </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Contac us </h3>
-                        <p>You can contact us writing us an mail at adress:
+          <div class="mdl-mega-footer--middle-section">
+            <p class="mdl-typography--font-light">Copyright © 2018 </p>
+            <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
                             mihai.temian@gmail.com</p>
-                    </div>
+          </div>
 
-                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                        <h3> Social</h3>
-                        <ul class="social">
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        </ul>
-                    </div>
+          <div class="mdl-mega-footer--bottom-section">
+            <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
+            <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+          </div>
 
-                </div>
-                <!--/.row-->
-            </div>
-            <!--/.container-->
-        </div>
-    </footer>
-
-
-
-
-
+        </footer>
     <!-- jQuery -->
     <script src="{% static "js/jquery.js" %}"></script>
 
@@ -199,7 +194,73 @@
         interval: 5000 //changes the speed
     })
     </script>
+ <script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 16
+        });
+        infoWindow = new google.maps.InfoWindow;
 
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Events nearby');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        var geocoder = new google.maps.Geocoder();
+        {% for event in events %}
+           geocodeAddress(geocoder, '{{ event.adress }}', '{{ event.name }}', map);
+        {% endfor %}
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+      function geocodeAddress(geocoder, address, title, resultsMap) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location,
+              title: title
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChLzJbKOprhuP0Vs_V-h3XCsTT6GTaGgs&callback=initMap">
+    </script>
+
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </body>
 
 </html>

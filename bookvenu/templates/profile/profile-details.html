@@ -1,7 +1,8 @@
 <html lang="en">
 
 <head>
-{% load staticfiles %}
+    {% load staticfiles %}
+    {% load material_form %}
     {% load widget_tweaks %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,11 +10,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Profile</title>
+    <title>BookVenue</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
@@ -26,69 +26,85 @@
     <!--[if lt IE 9]>
         <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
         <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
-    <![endif]-->
+    <![endif]-->    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
 
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
-    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/bootstrap-iso.css" %}"/>
+    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/bootstrap-iso.css" %}" />
 
     <!--Font Awesome (added because you use icons in your prepend/append)-->
-    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}"/>
-        <style>
-
-            .footer{
-                background: #B2BEB5;
-                height:200px;
-                position: absolute;
-                width: 100%;
-                border-bottom: 1px solid #CCCCCC;
-                border-top: 1px solid #DDDDDD;
-}
-
-                            @media only screen and (max-width: 1000px){
-                                .footer{
-                                    	background: #B2BEB5;
-                                        height:200px;
-                                        position: relative;
-                                        width: 100%;
-                                        border-bottom: 1px solid #CCCCCC;
-                                        border-top: 1px solid #DDDDDD;
+    <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css" %}" />
+    <link rel="stylesheet" href="/maps/documentation/javascript/demos/demos.css">
+    <style>
+                            #img_size {
+                                width: 845px;
+                                margin: 0;
+                                padding: 0;
+                            }
+                            @media only screen and (max-width: 599px){
+                                #img_size {
+                                    width: 287px;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                              }
+                              @media only screen and (max-width: 770px and min-width:600px){
+                                #img_size {
+                                    width: 700px;
+                                    margin: 0;
+                                    padding: 0;
                                 }
                               }
 
+                              body{
+                                background-color:#f2f2f2;
+                              {
 
-        </style>
+                                @media only screen and (max-width: 1700px){
+                                #img_size {
+                                    width: 287px;
+                                    margin: 0;
+                                    padding: 0;
+                                }
+                              }
+                        </style>
+        <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/style-material.css" %}" rel="stylesheet">
+
 </head>
 
-<body>
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
 
-              <a class="navbar-brand" href="/">BookVenue</a>
+<body>
+  <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="bv-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+          </span>
+
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="bv-header-spacer mdl-layout-spacer"></div>
+          <div class="bv-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field">
+            </div>
           </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="/create-request">Create a request</a>
-                  </li>
-                  <li>
-                      <a href="/create-post">+</a>
-                  </li>
-                  <li>
-                      <a href="/profile/">YOU</a>
-                  </li>
-                  <li>
-                      <a href="/logout">Logout</a>
-                  </li>
-              </ul>
+          <!-- Navigation -->
+          <div class="bv-navigation-container">
+            <nav class="bv-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-request"><i class="material-icons">build</i> Create Request</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-post"><i class="material-icons">event</i> Add Event</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/profile"><i class="material-icons">face</i> Profile</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout"><i class="material-icons">lock</i> Logout</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
+            </nav>
           </div>
-          <!-- /.navbar-collapse -->
+          <span class="bv-mobile-title mdl-layout-title">
+            <a href="/"><img class="bv-logo-image" src='{% static "css/10.png" %}'></a>
+          </span>
+        </div>
       </div>
-      <!-- /.container -->
-  </nav>
+</div>
 
 <div class="container" style="padding-top: 60px;">
   <h1 class="page-header">Edit Profile</h1>
@@ -172,47 +188,39 @@
   </div>
 </div>
 
-    <footer>
-        <div class="footer" id="footer">
-            <div class="container margini">
-                <div class="row">
+<div class="col-md-12">
 
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> About us </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> General links </h3>
-                        <ul>
-                            <li> <a href="/register"> Sign up </a> </li>
-                            <li> <a href="/logout"> Logout </a> </li>
-                            <li> <a href="/profile"> Profile </a> </li>
-                            <li> <a href="/create-post"> Create Post </a> </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Contac us </h3>
-                        <p>You can contact us writing us an mail at adress:
-                            mihai.temian@gmail.com</p>
-                        <li><a href="/contact">Contact us</a></li>
-                    </div>
-
-                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                        <h3> Social</h3>
-                        <ul class="social">
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!--/.row-->
+                <footer class="bv-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+            <div class="mdl-mega-footer--left-section">
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
             </div>
-            <!--/.container-->
-        </div>
-    </footer>
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Back to Top
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mdl-mega-footer--middle-section">
+            <p class="mdl-typography--font-light">Copyright © 2018 </p>
+            <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
+                            mihai.temian@gmail.com</p>
+          </div>
+
+          <div class="mdl-mega-footer--bottom-section">
+            <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
+            <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+          </div>
+
+        </footer>
+
+    </div>
 
 </body>
 </html>

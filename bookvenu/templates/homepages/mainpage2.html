@@ -2,21 +2,21 @@
 <html lang="en">
 
 <head>
-{% load staticfiles %}
+    {% load staticfiles %}
+    {% load material_form %}
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BookVenue2</title>
+    <title>BookVenue</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/style.css" %}" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="{% static "css/modern-business.css" &}" rel="stylesheet">
+    <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
@@ -26,7 +26,9 @@
     <!--[if lt IE 9]>
         <script src="{% static "https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js" %}"></script>
         <script src="{% static "https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js" %}"></script>
-    <![endif]-->
+    <![endif]-->    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
 
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
     <link rel="stylesheet" href="{% static "https://formden.com/static/cdn/bootstrap-iso.css" %}" />
@@ -66,48 +68,56 @@
                                     padding: 0;
                                 }
                               }
+                              #map {
+                                   width: 100%;
+                                   height: 80%;
+                                }
                         </style>
+        <link href="{% static "css/style.css" %}" rel="stylesheet">
+    <link href="{% static "css/style-material.css" %}" rel="stylesheet">
 
 </head>
 
 
 
-<div>
+<body link="#FFF8DC" vlink="#FFF8DC">
+    <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
+        <div class="mdl-layout__header-row">
+          <span class="bv-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+          </span>
 
-  <!-- Navigation -->
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <div class="navbar-header">
-
-              <a class="navbar-brand" href="/">BookVenue</a>
+          <!-- Add spacer, to align navigation to the right in desktop -->
+          <div class="bv-header-spacer mdl-layout-spacer"></div>
+          <div class="bv-search-box mdl-textfield mdl-js-textfield mdl-textfield--expandable mdl-textfield--floating-label mdl-textfield--align-right mdl-textfield--full-width">
+            <div class="mdl-textfield__expandable-holder">
+              <input class="mdl-textfield__input" type="text" id="search-field">
+            </div>
           </div>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-              <ul class="nav navbar-nav navbar-right">
-                  <li>
-                      <a href="/create-request">Create a request</a>
-                  </li>
-                  <li>
-                      <a href="/create-post">+</a>
-                  </li>
-                  <li>
-                      <a href="/profile">YOU</a>
-                  </li>
-                  <li>
-                      <a href="/logout">Logout</a>
-                  </li>
-              </ul>
+          <!-- Navigation -->
+          <div class="bv-navigation-container">
+            <nav class="bv-navigation mdl-navigation">
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-request"><i class="material-icons">build</i> Create Request</a>
+              <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/create-post"><i class="material-icons">event</i> Add Event</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/profile"><i class="material-icons">face</i> Profile</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/logout"><i class="material-icons">lock</i> Logout</a>
+                <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
+            </nav>
           </div>
-          <!-- /.navbar-collapse -->
+          <span class="bv-mobile-title mdl-layout-title">
+            <a href="/"><img class="bv-logo-image" src='{% static "css/10.png" %}'></a>
+          </span>
+        </div>
       </div>
-      <!-- /.container -->
-  </nav>
-
+     <div class="bv-content mdl-layout__content">
+        <a name="top"></a>
+        <div class="bv-map mdl-typography--text-center">
+            <div id="map"></div>
+        </div>
+    </div>
+</div>
     <div class="alb">
         <br><br><br>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11132.329361888747!2d21.21898925!3d45.76954005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sro!2sro!4v1470760832770" width=100% height=350px frameborder="0" style="border:0"></iframe>
-        <br>
 <div class="container">
         <div class="row">
             <div class="col-lg-12  col-lg-9">
@@ -128,33 +138,36 @@
 
                 <div class="row">
                     {% for post in events %}
+                    {% for post in events %}
+                    {% for post in events %}
                     <div class="col-sm-3 col-lg-3 col-md-3">
                         <div class="thumbnail">
                             <a href="/post/{{post.slug}}"><img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
                             <div class="caption" style="overflow-wrap: break-word">
-                                <h4 class="pull-right">${{post.price}}</h4>
-                                <h4><a href="/post/{{post.slug}}">{{ post.name }}</a></h4>
-                                <h4><strong>Addres:</strong>{{post.adress}}</h4>
-                                <h4><strong>Date:</strong>{{post.date}}<h4>
-                                    <h4> --> {{post.finaldate}}<h4>
+                                <h6 class="pull-right">${{post.price}}</h6>
+                                <h6><a href="/post/{{post.slug}}">{{ post.name }}</a></h6>
+                                <h6><strong>Addres:</strong>{{post.adress}}</h6>
+                                <h5><strong>Date:</strong>{{post.date}}<h5>
+                                    <h5> --> {{post.finaldate}}<h5>
                             </div>
                         </div>
                     </div>
                     {% endfor %}
+                    {% endfor %}
+                    {% endfor %}
                 </div>
-
                 <h2>Someone posted a request,make him an offer:</h2>
                 <div class="row">
                     {% for request in requests %}
                     <div class="col-sm-3 col-lg-3 col-md-3">
                         <div class="thumbnail">
                             <div class="caption" style="overflow-wrap: break-word">
-                                <h4><strong>Details:</strong>{{request.details}}</h4>
-                                <h4><strong>Budget:</strong> ${{request.price}}</h4>
-                                <h4><strong>City:</strong>{{request.city}}</h4>
-                                <h4><strong>Phone:</strong>{{request.phonenumber}}<h4>
-                                <h4><strong>Date:</strong>{{request.date}}<h4>
-                                    <h4> --> {{request.finaldate}}<h4>
+                                <h6><strong>Details:</strong>{{request.details}}</h6>
+                                <h6><strong>Budget:</strong> ${{request.price}}</h6>
+                                <h6><strong>City:</strong>{{request.city}}</h6>
+                                <h6><strong>Phone:</strong>{{request.phonenumber}}<h5>
+                                <h6><strong>Date:</strong>{{request.date}}<h5>
+                                    <h6> --> {{request.finaldate}}<h5>
                                         {% if request.autor == user %}
                                 <a href='{{request.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
                                     {% endif %}
@@ -167,46 +180,103 @@
         </div>
 </div>
     <!-- /.container -->
+
 </div>
-        <div class="footer" id="footer">
-            <div class="container margini">
-                <div class="row">
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> About us </h3>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque, optio corporis quae nulla aspernatur.</p>
-                    </div>
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> General links </h3>
-                        <ul>
-                            <li> <a href="/register"> Sign up </a> </li>
-                            <li> <a href="/logout"> Logout </a> </li>
-                            <li> <a href="/profile"> Profile </a> </li>
-                            <li> <a href="/create-post"> Create Post </a> </li>
-                        </ul>
-                    </div>
-
-                    <div class="col-lg-2  col-md-2 col-sm-4 col-xs-6">
-                        <h3> Contac us </h3>
-                        <p>You can contact us writing  an mail at adress:
-                            mihai.temian@gmail.com</p>
-                        <li><a href="/contact">Contact us</a></li>
-                    </div>
-
-                    <div class="col-lg-3  col-md-3 col-sm-6 col-xs-12 ">
-                        <h3> Social</h3>
-                        <ul class="social">
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a> </li>
-                            <li> <a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a> </li>
-                        </ul>
-                    </div>
-
-                </div>
-                <!--/.row-->
+        <footer class="bv-footer mdl-mega-footer">
+          <div class="mdl-mega-footer--top-section">
+            <div class="mdl-mega-footer--left-section">
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-google-plus">   </i> </a></button>
+              &nbsp;
+              <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class="fa fa-pinterest">   </i> </a></button>
             </div>
-            <!--/.container-->
-        </div>
+            <div class="mdl-mega-footer--right-section">
+              <a class="mdl-typography--font-light" href="#top">
+                Back to Top
+                <i class="material-icons">expand_less</i>
+              </a>
+            </div>
+          </div>
+
+          <div class="mdl-mega-footer--middle-section">
+            <p class="mdl-typography--font-light">Copyright © 2018 </p>
+            <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
+                            mihai.temian@gmail.com</p>
+          </div>
+
+          <div class="mdl-mega-footer--bottom-section">
+            <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
+            <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
+          </div>
+
+        </footer>
+<script>
+      // Note: This example requires that you consent to location sharing when
+      // prompted by your browser. If you see the error "The Geolocation service
+      // failed.", it means you probably did not give permission for the browser to
+      // locate you.
+      var map, infoWindow;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: -34.397, lng: 150.644},
+          zoom: 16
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(function(position) {
+            var pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude
+            };
+
+            infoWindow.setPosition(pos);
+            infoWindow.setContent('Events nearby');
+            infoWindow.open(map);
+            map.setCenter(pos);
+          }, function() {
+            handleLocationError(true, infoWindow, map.getCenter());
+          });
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false, infoWindow, map.getCenter());
+        }
+
+        var geocoder = new google.maps.Geocoder();
+        {% for event in events %}
+           geocodeAddress(geocoder, '{{ event.adress }}', '{{ event.name }}', map);
+        {% endfor %}
+      }
+
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
+      }
+
+      function geocodeAddress(geocoder, address, title, resultsMap) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            resultsMap.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: resultsMap,
+              position: results[0].geometry.location,
+              title: title
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+    </script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChLzJbKOprhuP0Vs_V-h3XCsTT6GTaGgs&callback=initMap">
+    </script>
+<script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 </body>
 
