@@ -68,6 +68,17 @@
                                     padding: 0;
                                 }
                               }
+                            button {
+                                background-color: #4CAF50;
+                                color: white;
+                                padding: 14px 20px;
+                                margin: 8px 0;
+                                border: none;
+                                cursor: pointer;
+                                width: 100%;
+                            }
+
+
                         </style>
         <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/style-material.css" %}" rel="stylesheet">
@@ -112,111 +123,136 @@
     <form  method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="container">
-        <div class="col-md-4">
-            <label>Name of event</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-user"></span></span>
+        <label>Name of event</label>
+        <input name="name" value="{{form.body}}" type="text" placeholder="Name" />
 
-                      {{ form.name|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
+         {% if form.name.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
 
-                    </div>
-            {% if form.name.errors %}
-                <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                                                         <strong>Warning!</strong>
 				                                        {% for errors in form.name.errors %}
 				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-      </div>
 
-    <div class="col-md-4">
-            <label>Date</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-calendar"></span></span>
+         <label>Date</label>
+        <input name="date" value="{{form.body}}" type="text" placeholder="YYYY-MM-DD" />
 
-                      {{ form.date|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
-        {% if form.date.errors %}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Warning!</strong>
-                        {% for errors in form.date.errors %}
-                        {{ errors }}
-                        {% endfor %}
-                    </div>
-        {% endif %}
-    </div>
+         {% if form.date.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
 
-            <div class="col-md-4">
-            <label>Final Date</label>
-                    <div class="input-group" >
-                      <span class="input-group-addon" id="basic-addon1" ><span class="glyphicon glyphicon-calendar"></span></span>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.date.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
 
-                      {{ form.finaldate|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                    </div>
-        {% if form.finaldate.errors %}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                        <strong>Warning!</strong>
-                        {% for errors in form.finaldate.errors %}
-                        {{ errors }}
-                        {% endfor %}
-                    </div>
-        {% endif %}
-    </div>
+        <label>Final Date</label>
+        <input name="finaldate" value="{{form.body}}" type="text" placeholder="YYYY-MM-DD" />
 
-        <br></br><br><br>
+         {% if form.finaldate.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
 
-       <div class="col-md-4">
-            <label>Adress</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-home"></span></span>
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.finaldate.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
 
-                      {{ form.adress|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           {% if form.adress.errors %}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        <label>Address</label>
+        <input name="adress" value="{{form.body}}" type="text" placeholder="Address" />
+
+         {% if form.adress.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
                                                         <strong>Warning!</strong>
 				                                        {% for errors in form.adress.errors %}
 				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-       </div>
-        <br><br><br>
 
-       <div class="col-md-4">
-        <label>Phone number</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-phone"></span></span>
+        <label>Phonenumber</label>
+        <input name="phonenumber" value="{{form.body}}" type="text" placeholder="Phonenumber" />
 
-                      {{ form.phonenumber|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           {% if form.phonenumber.errors %}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+         {% if form.phonenumber.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
                                                         <strong>Warning!</strong>
 				                                        {% for errors in form.phonenumber.errors %}
 				                                                {{ errors }}
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-       </div>
 
 
 
-       <div class="col-md-4">
+        <label>NrLocuri</label>
+        <input name="nrlocuri" value="{{form.body}}" type="text" placeholder="NrLocuri" />
+
+         {% if form.nrlocuri.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.nrlocuri.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+        <label>Details</label>
+        <input name="details" value="{{form.body}}" type="text" placeholder="Details" />
+
+         {% if form.details.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.details.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+        <label>Site</label>
+        <input name="site" value="{{form.body}}" type="text" placeholder="Site" />
+
+         {% if form.site.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.site.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+
+        <label>Price</label>
+        <input name="price" value="{{form.body}}" type="text" placeholder="Price" />
+
+         {% if form.price.errors %}
+         <div class="alert alert-danger alert-dismissible" role="alert">
+
+                                                        <strong>Warning!</strong>
+				                                        {% for errors in form.price.errors %}
+				                                                {{ errors }}
+				                                        {% endfor %}
+                                                            </div>
+                                             {% endif %}
+
+
+
             <label>Category</label>
-<div >
+
 
 
               {{ form.category|add_class:"form-control "|attr:"required:required"}}
 
 
-  </div>
+
            {% if form.category.errors %}
                     <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -227,93 +263,12 @@
                                                             </div>
                                              {% endif %}
 
-       </div>
 
 
-       <div class="col-md-4">
-            <label>NrLocuri</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-equalizer"></span></span>
-
-                      {{ form.nrlocuri|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           {% if form.nrlocuri.errors %}
-           <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.nrlocuri.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-       </div>
-
-        <br><br><br>
-
-       <div class="col-md-4">
-            <label>Details</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-blackboard"></span></span>
-
-                      {{ form.details|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           {% if form.details.errors %}
-           <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.details.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-      </div>
-
-               <div class="col-md-4">
-            <label>Site</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-blackboard"></span></span>
-
-                      {{ form.site|add_class:"form-control"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-           {% if form.site.errors %}
-           <div class="alert alert-danger alert-dismissible" role="alert">
-                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.site.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-      </div>
-
-             <div class="col-md-4">
-        <label>Price</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-scale"></span></span>
-
-                      {{ form.price|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
-         {% if form.price.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.price.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-     </div>
-
-
-
-        <div class="col-md-4">
             <label>Image</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-file"></span></span>
 
                       {{ form.image1|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
+
            {% if form.image1.errors %}
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -323,17 +278,16 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-        </div>
 
 
-<br><br><br><br>
-         <div class="col-md-4">
+
+
+
             <label>Image</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-file"></span></span>
+
 
                       {{ form.image2|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
+
            {% if form.image2.errorss %}
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -343,15 +297,13 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-        </div>
 
-         <div class="col-md-4">
+
+
             <label>Image</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-file"></span></span>
 
                       {{ form.image3|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
+
            {% if form.image3.errors %}
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -361,15 +313,13 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-        </div>
 
-         <div class="col-md-4">
+
+
             <label>Image</label>
-                    <div class="input-group">
-                      <span class="input-group-addon" id="basic-addon1"><span class="glyphicon glyphicon-file"></span></span>
 
                       {{ form.image4|add_class:"form-control"|attr:"required:required"|attr:"aria-describedby=basic-addon1"}}
-                        </div>
+
            {% if form.image4.errors %}
            <div class="alert alert-danger alert-dismissible" role="alert">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -379,14 +329,16 @@
 				                                        {% endfor %}
                                                             </div>
                                              {% endif %}
-        </div>
 
-       <br><br><br><br>
-     <div class="margini5">
-       <button class="btn btn-primary">Submit</button>
-     </div>
+
+
+       <button type="submit">Submit</button>
+
     </div>
+
+
 </form>
+
 
 <div class="col-md-12">
 

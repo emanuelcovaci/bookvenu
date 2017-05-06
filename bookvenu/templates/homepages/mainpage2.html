@@ -72,6 +72,9 @@
                                    width: 100%;
                                    height: 80%;
                                 }
+                                form {
+                            border: 0;
+                        }
                         </style>
     <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/style-material.css" %}" rel="stylesheet">
@@ -135,9 +138,9 @@
         </div>
     </div>
 
-    <div class="alb container">
+    <div class="container" style="background-color:#fff;">
         <div class="row">
-            <div class="col-lg-12  col-lg-9">
+            <div class="col-lg-12 ">
 
                 <form method="GET" action="">
                     <h2>Search for a nearby event:</h2>
@@ -155,7 +158,7 @@
 
                 <div class="row">
                     {% for post in events %}
-                    <div class="col-sm-4 col-lg-4 col-md-4">
+                    <div class="col-sm-3 col-lg-3 col-md-3">
                         <div class="thumbnail">
                             <a href="/post/{{post.slug}}"><img src= '{{  post.image1.url }}'  class = 'img-responsive'/></a>
                             <div class="caption" style="overflow-wrap: break-word">
@@ -163,8 +166,6 @@
                                 <h6><a href="/post/{{post.slug}}"> {{ post.name }}</a></h6>
                                 <h6><strong>Description:</strong>  {{post.details|truncatechars:50}}</h6>
                                 <h6><strong>Address:</strong>  {{post.adress}}</h6>
-                                <h6><strong>Begins:</strong>   {{post.date}}<h6>
-                                    <h6><strong>Ends:</strong> {{post.finaldate}}<h6>
                             </div>
                         </div>
                     </div>
@@ -213,7 +214,7 @@
         </div>
 
         <div class="mdl-mega-footer--middle-section">
-            <p class="mdl-typography--font-light">Copyright © 2018 </p>
+            <p class="mdl-typography--font-light">Copyright © 2018:getmdl.io/templates/android-dot-com/index.html</p>
             <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
                 mihai.temian@gmail.com</p>
         </div>
@@ -287,10 +288,11 @@
       }
 
     </script>
-    <script async defer
+
+</div>
+<script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyChLzJbKOprhuP0Vs_V-h3XCsTT6GTaGgs&callback=initMap">
     </script>
-</div>
 <script src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 
 </body>

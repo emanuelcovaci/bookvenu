@@ -69,6 +69,12 @@
                                     padding: 0;
                                 }
                               }
+
+
+}
+form {
+    border: 0;
+}
                         </style>
     <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/style-material.css" %}" rel="stylesheet">
@@ -85,6 +91,7 @@
             <img class="bv-logo-image" src='{% static "css/10.png" %}'>
           </span>
             </a>
+
 
             <!-- Add spacer, to align navigation to the right in desktop -->
             <div class="bv-header-spacer mdl-layout-spacer"></div>
@@ -103,8 +110,11 @@
                     <a class="mdl-navigation__link mdl-typography--text-uppercase" href="/"><i class="material-icons">home</i> Home</a>
                 </nav>
             </div>
-
+            <span class="bv-mobile-title mdl-layout-title">
+            <img class="bv-logo-image" src='{% static "css/10.png" %}'>
+          </span>
         </div>
+    </div>
 
 
         <div class="bv-drawer mdl-layout__drawer">
@@ -119,80 +129,17 @@
                 <a class="mdl-navigation__link" href="/"><i class="material-icons">home</i> Home</a>
             </nav>
         </div>
-    </div>
-    <div class="bv-content mdl-layout__content">
-        <div class="col-lg-3">
-            <div class="ceva21">
-
-                <font size="3"><p>Name:{{ events.name }}</p></font>
-
-                <br>
 
 
-                <font size="3"><p>Adress:{{events.adress}}</p></font>
 
+     <div class="col-lg-10 col-lg-offset-2">
 
-                <br>
-                <font size="3"><p>Category:{{events.category}}</p></font>
-                <br>
+        <div class="row">
 
+            <div class="col-md-9">
 
-                <font size="3"><p>People:{{events.nrlocuri }}</p></font>
-
-                <br>
-
-
-                <font size="3"><p>Date:{{ events.date }}</p></font>
-
-                <br>
-
-                <font size="3"><p>Final Date:{{ events.finaldate }}</p></font>
-
-                <br>
-
-                <font size="3"><p>Phone number:{{events.phonenumber}}</p></font>
-
-                <br>
-
-
-                <font size="3"><p>Price:{{ events.price }}</p></font>
-
-                <br>
-                <font size="3"><p>Author:{{events.author}}</p></font>
-                <br>
-
-                <font size="3"><p>Site:{{events.site}}</p></font>
-                <br>
-                <form action="{{ events.get_reserve_url }}" method="post">
-                    {% csrf_token %}
-                    {% if errors %}
-                    {% for error in errors %}
-                    <div class="alert alert-danger alert-dismissible" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <strong>Warning!</strong> {{ error }}
-                    </div>
-                    {% endfor %}
-                    {% endif %}
-
-                    <input class="form-control" name="nrlocuri" type="text" placeholder="Number of people" />
-                    <div class="ceva2">
-
-                        <button type="submit" class="btn btn-primary">Interested</button>
-                    </div>
-                </form>
-
-                {% if events.author == user %}
-                <a href='{{events.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
-                {% endif %}
-                <a class='like-btn btn btn-xs btn-primary' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ events.total_likes }} Like</a>
-
-            </div>
-        </div>
-        <div class="col-lg-9">
-
-            <div class="slider">
-                <div class="ceva1">
-                    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <div class="thumbnail">
+                                        <div id="myCarousel" class="carousel slide" data-ride="carousel">
                         <!-- Indicators -->
                         <ol class="carousel-indicators">
                             <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -230,44 +177,51 @@
                             <span class="sr-only">Next</span>
                         </a>
                     </div>
-                </div>
+                    <div class="caption-full">
+                        <div class="pull-right">
+                        <h4 >${{events.price}}</h4>
+                                                    <h5>Site:{{events.site}}</h5>
+                        <h5>Begins:{{events.date}}</h5>
+                        <h5>Ends:{{events.finaldate}}</h5>
+                            </div>
+                        <h4>{{events.name}}</h4>
+                        <h5>Author:{{events.author}}</h5>
+                        <h5>People:{{events.nrlocuri}}</h5>
+                        <h5>Address:{{events.adress}}</h5>
+                        <h5>Phonenumber:{{events.phonenumber}}</h5>
+                        {{events.details}}
+                        <div class="ratings">
+                            <p class="pull-right"><a class='like-btn btn btn-xs btn-primary' data-href='{{ events.get_like_url }}' data-likes='{{ events.total_likes }}' href='{{ events.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ events.total_likes }} Like</a></p>
+                            <p>                {% if events.author == user %}
+                            <a href='{{events.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete event</a>
+                            {% endif %}
+                            </p>
 
-                <div class="ceva3">
-                    <img src= '{{  events.image2.url }}'  class = 'img-responsive'/></a>
-                </div>
+                            <form style="border:0" action="{{ events.get_reserve_url }}" method="post">
+                                {% csrf_token %}
+                                {% if errors %}
+                                {% for error in errors %}
+                                <div class="alert alert-danger alert-dismissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <strong>Warning!</strong> {{ error }}
+                                </div>
+                                {% endfor %}
+                                {% endif %}
+                                <div class="col-lg-5">
 
-                <div class="ceva4">
-                    <img src= '{{  events.image3.url }}'  class = 'img-responsive'/></a>
-                </div>
+                                    <input class="form-control" name="nrlocuri" type="text" placeholder="Number of people" /></div>
+                                    <div class="ceva2">
+                                        <button type="submit" class="btn btn-primary">Interested</button>
+                                     </div><br>
+                            </form>
+                        </div>
+                    </div>
 
-                <div class="ceva6">
-                    <img src= '{{  events.image4.url }}'  class = 'img-responsive'/></a>
-                </div>
-                <div class="ceva5">
-                    <font size="3"><p>{{events.details}}</p></font>
-                </div>
+                <div class="well">
 
-
-            </div>
-
-            <br><br><br><br>
-
-
-
-            <div class="col-sm-12 margina">
-                <h3>Comments</h3>
-            </div><!-- /col-sm-12 -->
-
-            {% for comment in comm_parent %}
-            <div class="row">
-                <div class="col-sm-1">
-                    <div class="thumbnail">
-                        <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                    </div><!-- /thumbnail -->
-                </div><!-- /col-sm-1 -->
-
-                <div class="col-sm-5">
-                    <div class="panel panel-default">
+                    {% for comment in comm_parent %}
+                    <div class="row">
+                        <div class="panel panel-default">
                         <div class="panel-heading">
                             <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
                             {% if comment.user == user %}
@@ -281,13 +235,9 @@
                         </div><!-- /panel-body -->
 
                     </div><!-- /panel panel-default -->
-                    <div class="row">
-                        {% for reply in comment.children %}
-                        <div class="col-sm-2">
-                            <div class="thumbnail">
-                                <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-                            </div><!-- /thumbnail -->
-                        </div><!-- /col-sm-1 -->
+
+
+                            {% for reply in comment.children %}
 
                         <div class="col-sm-10">
                             <div class="panel panel-comment panel-default">
@@ -303,44 +253,48 @@
                             </div><!-- /panel panel-default -->
                         </div><!-- /col-sm-5 -->
                         {% endfor %}
-                    </div><!-- /row -->
-                    <form action="." method='post'>
-                        {% csrf_token %}
-                        <strong>Reply</strong>
-                        <input type='hidden' name='parent_id' value={{comment.id}}>
-                        <input class="form-control" name="body" value="{{form.body}}" type="text" placeholder="Your reply" />
 
 
-                        <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
 
-
-                    </form>
-                </div><!-- /col-sm-5 -->
-            </div><!-- /row -->
-            <br>
-            {% endfor %}
-
-            </form>
-            <div class="row">
-                <form action="." method='post'>
-                    {% csrf_token %}
-                    <div class="col-lg-9">
-                        <label class="col-sm-2 control-label">Comment </label><br/><br/>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" name="body"  rows="5" value="{{form.body}}"></textarea>
-                            <div class="form-group">
-                                <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
-                            </div>
-                        </div>
+                            <form action="." method='post'>
+                                {% csrf_token %}
+                                <div class="col-lg-5">
+                                <input type='hidden' name='parent_id' value={{comment.id}}>
+                                <input class="form-control" name="body" value="{{form.body}}" type="text" placeholder="Your reply" />
+                                    <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
+                                </div>
+                            </form>
                     </div>
-                </form>
-                <br>
+                            <br>
+                    {% endfor %}
+
+                        <div class="row">
+                            <form action="." method='post'>
+                                {% csrf_token %}
+                                <div class="col-lg-9">
+                                    <label class="col-sm-6 control-label">Post a comment </label>
+
+                                        <input class="form-control" name="body" value="{{form.body}}"/>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
+                                        </div>
+
+                                </div>
+                            </form>
+                            <br>
+                        </div>
+
+                    </div>
+
+                </div>
+
             </div>
 
         </div>
-        <div class="col-md-12">
 
-            <footer class="bv-footer mdl-mega-footer">
+    </div>
+</div>
+<footer class="bv-footer mdl-mega-footer">
                 <div class="mdl-mega-footer--top-section">
                     <div class="mdl-mega-footer--left-section">
                         <button class="mdl-mega-footer--social-btn"><a href="https://www.facebook.com/temian.mihai"> <i class=" fa fa-facebook">   </i> </a></button>
@@ -369,12 +323,6 @@
                 </div>
 
             </footer>
-
-        </div>
-    </div>
-
-</div>
-
 
 <script>
      $(document).ready(function(){
