@@ -18,13 +18,13 @@ class RequestModel(models.Model):
     price = models.CharField(max_length=15)
     phonenumber = models.CharField(max_length=10)
     details = models.CharField(max_length=1000)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=False)
 
     def get_delete_url(self):
         return reverse("request:delete-request", kwargs={"slug": self.slug})
 
 def create_slug(instance, new_slug=None):
-    slug = slugify(instance.city)
+    slug = slugify(instance.phonenumber)
     if new_slug is not None:
         slug = new_slug
     qs =RequestModel.objects.filter(slug=slug).ordered_by("-id")
@@ -36,7 +36,7 @@ def create_slug(instance, new_slug=None):
 
 
 def pre_save_post_receiver(sender, instance, *args, **kwargs):
-    slug = slugify(instance.city)
+    slug = slugify(instance.phonenumber)
     exists = RequestModel.objects.filter(slug=slug).exists()
     if exists:
         slug = "%s-%s" % (slug, instance.id)

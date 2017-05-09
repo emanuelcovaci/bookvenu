@@ -330,8 +330,11 @@ body {
     margin-left:17%;
 }
 
-/* Bordered form */
 
+.success-popup  {
+    transition: .3s ease all;
+    font-family: 'Roboto', sans-serif;
+}
 
 /* Full-width inputs */
 input {
