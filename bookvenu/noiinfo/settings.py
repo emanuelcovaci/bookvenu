@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'category',
     'requests',
     'contact',
+    'forum',
     'rest_framework',
     'django_extensions',
     'material',

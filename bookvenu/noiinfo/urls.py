@@ -26,5 +26,6 @@ urlpatterns = [
     url(r'^profile/', include('user_profile.urls')),
     url(r'^', include('post.urls',namespace='post')),
     url(r'^', include('contact.urls')),
+    url(r'^', include('forum.urls',namespace='forum')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
