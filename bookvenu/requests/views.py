@@ -12,7 +12,6 @@ def create_request(request):
             request = form.instance
             request.autor = current_user
             form.save()
-            return redirect('/')
     return render(request, "posts/request.html", {
         'user': request.user,
         'form': form,

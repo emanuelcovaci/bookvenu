@@ -1,5 +1,4 @@
-<html lang="en">
-
+<html>
 <head>
     {% load staticfiles %}
     {% load material_form %}
@@ -11,14 +10,14 @@
     <meta name="author" content="">
 
     <title>BookVenue</title>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="{% static "css/bootstrap.min.css" %}" rel="stylesheet">
-    <link href="{% static "css/styleinput.css" %}" rel="stylesheet">
 
     <!-- Custom CSS -->
     <link href="{% static "css/modern-business.css" %}" rel="stylesheet">
-
+    <link href="{% static "css/styleinput.css" %}" rel="stylesheet">
     <!-- Custom Fonts -->
     <link href="{% static "font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
 
@@ -30,7 +29,7 @@
     <![endif]-->    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- Special version of Bootstrap that only affects content wrapped in .bootstrap-iso -->
@@ -71,14 +70,17 @@
                                     padding: 0;
                                 }
                               }
+
+
+
                         </style>
         <link href="{% static "css/style.css" %}" rel="stylesheet">
     <link href="{% static "css/style-material.css" %}" rel="stylesheet">
 
 </head>
+<div>
 
-<body>
-<div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
+   <div class="bv-header mdl-layout__header mdl-layout__header--waterfall">
         <div class="mdl-layout__header-row">
           <a href="/">
           <span class="bv-title mdl-layout-title">
@@ -107,138 +109,123 @@
       </div>
 
 </div>
+    {% load staticfiles %}
+    {% load material_form %}
+    {% load widget_tweaks %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js%22%3E"</script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<div class="container">
+    <div class="well">
+<h3> {{ thread.name }} </h3>
+        <hr>
+<h4> {{ thread.body }} </h4>
 
-    <div class="col-lg-12">
-        <h2 class="page-header" align="center">Post your request right now</h2>
+</br>
+{% if user == thread.user %}
+  <a href='{{ thread.get_delete_url }}' class="btn btn-xs btn-danger"> Delete</a>
+{% endif %}
     </div>
-    <form  method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <div class="container">
+{% for comment in comm_parent %}
+                    <div class="row">
+                        <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <strong>{{ comment.user }}</strong> <span class="text-muted">{{ comment.date_created}}</span>
+                        </div>
 
-    <label>Date</label>
-        <input name="date" value="{{form.body}}" type="text" placeholder="YYYY-MM-DD" />
+                        <div class="panel-body">
+                            {{ comment.body }}
+                        </div><!-- /panel-body -->
 
-         {% if form.date.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
+                    </div><!-- /panel panel-default -->
 
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.date.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
 
-             <label>Final Date</label>
-        <input name="finaldate" value="{{form.body}}" type="text" placeholder="YYYY-MM-DD" />
+                            {% for reply in comment.children %}
 
-         {% if form.finaldate.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.finaldate.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-       <label>City</label>
-        <input name="city" value="{{form.body}}" type="text" placeholder="City" />
-
-         {% if form.city.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.city.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-      <label>Phonenumber</label>
-        <input name="phonenumber" value="{{form.body}}" type="text" placeholder="Phonenumber" />
-
-         {% if form.phonenumber.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.phonenumber.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-            <label>NrLocuri</label>
-        <input name="nrlocuri" value="{{form.body}}" type="text" placeholder="NrLocuri" />
-
-         {% if form.nrlocuri.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.nrlocuri.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
-
-      <label>Details</label>
-        <input name="details" value="{{form.body}}" type="text" placeholder="Details" />
-
-         {% if form.details.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
-
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.details.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
+                        <div class="col-sm-10">
+                            <div class="panel panel-comment panel-default">
+                                <div class="panel-heading-comment panel-heading">
+                                    <strong>{{ reply.user }}</strong> <span class="text-muted">{{ reply.date_created}}</span>
+                                </div>
+                                <div class="panel-body">
+                                    {{ reply.body }}
+                                </div><!-- /panel-body -->
+                            </div><!-- /panel panel-default -->
+                        </div><!-- /col-sm-5 -->
+                        {% endfor %}
 
 
 
-             <label>Price</label>
-        <input name="price" value="{{form.body}}" type="text" placeholder="Price" />
+                            <form action="." method='post'>
+                                {% csrf_token %}
+                                <div class="col-lg-5">
+                                <input type='hidden' name='parent_id' value={{comment.id}}>
+                                <input class="form-control" name="body" value="{{form.body}}" type="text" placeholder="Your reply" />
+                                    <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Reply</button>
+                                </div>
+                            </form>
+                    </div>
+                            <br>
+                    {% endfor %}
 
-         {% if form.price.errors %}
-         <div class="alert alert-danger alert-dismissible" role="alert">
+                        <div class="row">
+                            <form action="." method='post'>
+                                {% csrf_token %}
+                                <div class="col-lg-9">
+                                    <label class="col-sm-6 control-label">Post a comment </label>
 
-                                                        <strong>Warning!</strong>
-				                                        {% for errors in form.price.errors %}
-				                                                {{ errors }}
-				                                        {% endfor %}
-                                                            </div>
-                                             {% endif %}
+                                        <input class="form-control" name="body" value="{{form.body}}"/>
+                                        <div class="form-group">
+                                            <button class="btn btn-success btn-circle text-uppercase" type="submit"><span class="glyphicon glyphicon-send"></span> Submit comment</button>
+                                        </div>
 
-        <div class="modal fade" id="myModal" role="dialog">
-            <div class="modal-dialog">
+                                </div>
+                            </form>
+                            <br>
+                        </div>
 
-              <!-- Modal content-->
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Thank you!</h4>
-                </div>
-                <div class="modal-body">
-                  <p>Thank you for adding your event on our platform!
-                  If you have some errors,please repair them,otherwise your request won't be added!</p>
-                </div>
-                <div class="modal-footer">
-                  <a href="/"><button type="button" class="btn btn-default">Go home</button></a>
-                </div>
-              </div>
+                    </div>
+</div>
 
-            </div>
-        </div>
-<br><br>
+<script>
+     $(document).ready(function(){
+          function updateText(btn, newCount, verb){
+          btn.attr("data-likes", newCount)
+          btn.text(newCount + " " + verb)
+      }
+      $(".like-btn").click(function(e){
+        e.preventDefault()
+        var this_ = $(this)
+        var likeUrl = this_.attr("data-href")
+        var likeCount = parseInt(this_.attr("data-likes")) | 0
+        var addLike = likeCount + 1
+        var removeLike = likeCount - 1
+        var verb = "Likes"
+        if( this.ajax ){
+                    this.ajax.abort();
+                }
+        this.ajax = $.ajax({
+            url: likeUrl,
+            method: "GET",
+            data: {},
+            success: function(data){
+              console.log(data)
+              var newLikes;
+              if (data.liked){
+                  updateText(this_, addLike, verb)
+              } else {
+                  updateText(this_, removeLike, verb)
+                  // remove one like
+              }
+            }, error: function(data){
+              console.log(data)
+              console.log("error")
+            }
+          })
 
-
-       <button type="submit" data-toggle="modal" data-target="#myModal">Submit</button>
-
-
-        <p>!!! Please delete your request after you finish a deal.</p>
-
-    </div>
-</form>
-
+      })
+  })
+    </scr
+    </script>
 <div class="col-md-12">
 
                 <footer class="bv-footer mdl-mega-footer">
@@ -267,7 +254,7 @@
           <div class="mdl-mega-footer--bottom-section">
             <a class="bv-link mdl-typography--font-light" href="/register">Signup</a>
             <a class="bv-link mdl-typography--font-light" href="/login">Login</a>
-                          <a class="bv-link mdl-typography--font-light" href="/forum">Forum</a>
+              <a class="bv-link mdl-typography--font-light" href="/forum">Forum</a>
 
           </div>
 
