@@ -20,14 +20,14 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'u6pr011&$_l3m4b@uhy%yua2+4kv+ly9gj#!7%x9w^@q=m3i#q'
 
 # RECAPTCHA
-RECAPTCHA_PUBLIC_KEY = '6LcOHRYUAAAAAOPjLWe4ya2DrN1SEcKRbsYe-Kqh'
-RECAPTCHA_PRIVATE_KEY = '6LcOHRYUAAAAAFTBN0c6E0lGx8ScDTPoy9cVSKjI'
+RECAPTCHA_PUBLIC_KEY = '6LeGKyAUAAAAAAogp_QyRM7f5J5KX-L-sH4mH76R'
+RECAPTCHA_PRIVATE_KEY = '6LeGKyAUAAAAAMJCre3NEprgpcNAXiiJRsGdZts5'
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ["46.101.148.83","bookvenue.info","www.bookvenue.info"]
 
 
 # Application definition
