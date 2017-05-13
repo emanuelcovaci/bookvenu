@@ -125,6 +125,8 @@
   <a href='{{ thread.get_delete_url }}' class="btn btn-xs btn-danger"> Delete</a>
 {% endif %}
     </div>
+<a class='like-btn btn btn-xs btn-primary' data-href='{{ thread.get_like_url }}' data-likes='{{ thread.total_likes }}' href='{{ thread.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ thread.total_likes }} Like</a>
+
 {% for comment in comm_parent %}
                     <div class="row">
                         <div class="panel panel-default">
@@ -135,9 +137,11 @@
                         <div class="panel-body">
                             {{ comment.body }}
                         </div><!-- /panel-body -->
-
+                        <a class='like-btn btn btn-xs btn-primary' data-href='{{ comment.get_like_url }}' data-likes='{{ comment.total_likes }}' href='{{ comment.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ comment.total_likes }} Like</a>
+      {% if comment.user == user %}
+      <a href='{{comment.get_delete_url}}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete comment</a>
+        {% endif %}
                     </div><!-- /panel panel-default -->
-
 
                             {% for reply in comment.children %}
 
@@ -150,6 +154,10 @@
                                     {{ reply.body }}
                                 </div><!-- /panel-body -->
                             </div><!-- /panel panel-default -->
+                            <a class='like-btn btn btn-xs btn-primary' data-href='{{ reply.get_like_url }}' data-likes='{{ reply.total_likes }}' href='{{ reply.get_like_url }}' ><span class="glyphicon glyphicon-thumbs-up"></span>{{ reply.total_likes }} Like</a>
+    {% if reply.user == user %}
+    <a href='{{ reply.get_delete_url }}' class="btn btn-xs btn-danger"><span class="glyphicon glyphicon-minus-sign"></span> Delete comment</a>
+      {% endif %}
                         </div><!-- /col-sm-5 -->
                         {% endfor %}
 
@@ -224,7 +232,6 @@
 
       })
   })
-    </scr
     </script>
 <div class="col-md-12">
 
@@ -248,7 +255,7 @@
           <div class="mdl-mega-footer--middle-section">
             <p class="mdl-typography--font-light">Copyright © 2018 </p>
             <p class="mdl-typography--font-light">You can contact us writing us an mail at address:
-                            mihai.temian@gmail.com</p>
+                            <a class="__cf_email__" href="/cdn-cgi/l/email-protection" data-cfemail="492420212820673d2c24202827092e24282025672a2624">[email&#160;protected]</a><script data-cfhash='f9e31' type="text/javascript">/* <![CDATA[ */!function(t,e,r,n,c,a,p){try{t=document.currentScript||function(){for(t=document.getElementsByTagName('script'),e=t.length;e--;)if(t[e].getAttribute('data-cfhash'))return t[e]}();if(t&&(c=t.previousSibling)){p=t.parentNode;if(a=c.getAttribute('data-cfemail')){for(e='',r='0x'+a.substr(0,2)|0,n=2;a.length-n;n+=2)e+='%'+('0'+('0x'+a.substr(n,2)^r).toString(16)).slice(-2);p.replaceChild(document.createTextNode(decodeURIComponent(e)),c)}p.removeChild(t)}}catch(u){}}()/* ]]> */</script></p>
           </div>
 
           <div class="mdl-mega-footer--bottom-section">
